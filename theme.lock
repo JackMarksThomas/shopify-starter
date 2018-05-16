@@ -70,7 +70,7 @@ sections/featured-product.liquid:
 sections/footer.liquid:
   development: 2018-05-16T08:28:17-04:00   6b96f1b214049e0a1aaa42aad75874b7
 sections/header.liquid:
-  development: 2018-05-16T07:09:03-04:00   689850fbdbe1ea4c9be357f880426aa7
+  development: 2018-05-16T09:15:46-04:00   18c52253615e82e1d8664585eb6a2404
 sections/hero.liquid:
   development: 2018-05-15T09:20:02-04:00   b75948d15b81b97297a923bc6ed33fc4
 sections/image-bar.liquid:
@@ -224,7 +224,7 @@ snippets/product-price.liquid:
 snippets/search-form.liquid:
   development: 2018-05-15T09:20:07-04:00   28a50f2542fd28c27fd3eb50ae816c46
 snippets/site-nav.liquid:
-  development: 2018-05-16T09:09:45-04:00   fd9d7d76c60a7c89de5ea9caf06ff6e8
+  development: 2018-05-16T09:15:58-04:00   81ebbd068d98ba72ee96ef58c550b13d
 snippets/social-meta-tags.liquid:
   development: 2018-05-15T09:20:07-04:00   ae9e213401623b2601abf0ace8e21537
 snippets/social-sharing.liquid:

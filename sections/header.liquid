@@ -139,11 +139,11 @@
             <span class="icon__fallback-text">{{ 'layout.navigation.search' | t }}</span>
           </button> {% endcomment %}
           <a href="/cart" class="medium-up--hide">
-                <span>My Cart
-                  {% if cart.item_count > 0 %}
-                    : (<strong> {{ cart.item_count }} </strong>)
-                  {% endif %}
-                </span>
+            {% if cart.item_count > 0 %}
+                My Cart: (<strong> {{ cart.item_count }} </strong>)
+              {% else %}
+                My Cart: (😒)
+            {% endif %}
           </a>
           {% if shop.customer_accounts_enabled %}
             {% if customer %}
