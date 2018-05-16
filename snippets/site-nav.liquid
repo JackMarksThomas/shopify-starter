@@ -67,4 +67,10 @@
       </li>
     {% endif %}
   {% endfor %}
+  <a href="/cart">
+            My Cart: {% comment %} {% include 'icon-cart' %} {% endcomment %}
+              {% if cart.item_count > 0 %}
+                (<strong> {{ cart.item_count }} </strong>)
+              {% endif %}
+          </a>
 </ul>

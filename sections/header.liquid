@@ -138,7 +138,13 @@
             {% include 'icon-search' %}
             <span class="icon__fallback-text">{{ 'layout.navigation.search' | t }}</span>
           </button> {% endcomment %}
-
+          <a href="/cart" class="medium-up--hide">
+                <span>My Cart
+                  {% if cart.item_count > 0 %}
+                    : (<strong> {{ cart.item_count }} </strong>)
+                  {% endif %}
+                </span>
+          </a>
           {% if shop.customer_accounts_enabled %}
             {% if customer %}
               <a href="/account" class="site-header__account">
@@ -152,17 +158,6 @@
               </a>
             {% endif %}
           {% endif %}
-
-          <a href="/cart" class="site-header__cart">
-            {% include 'icon-cart' %}
-            <span class="icon__fallback-text">{{ 'layout.cart.title' | t }}</span>
-            {% if cart.item_count > 0 %}
-              <div id="CartCount" class="site-header__cart-count">
-                <span>{{ cart.item_count }}</span>
-                <span class="icon__fallback-text medium-up--hide">{{ 'layout.cart.items_count' | t: count: cart.item_count }}</span>
-              </div>
-            {% endif %}
-          </a>
 
           {% unless linklists[section.settings.main_linklist] == blank %}
             <button type="button" class="btn--link site-header__menu js-mobile-nav-toggle mobile-nav--open" aria-controls="navigation"  aria-expanded="false" aria-label="{{ 'layout.navigation.menu' | t }}">

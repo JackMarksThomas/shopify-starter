@@ -1,11 +1,11 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Debut",
-    "theme_author": "Shopify",
+    "theme_name": "Test Theme",
+    "theme_author": "JMT",
     "theme_version": "3.1.1",
-    "theme_documentation_url": "https:\/\/help.shopify.com\/manual\/using-themes\/themes-by-shopify\/debut",
-    "theme_support_url": "https:\/\/support.shopify.com\/"
+    "theme_documentation_url": "https://jackmarksthomas.github.io/",
+    "theme_support_email": "jackmarksthomas@googlemail.com"
   },
   {
     "name": {
@@ -214,7 +214,8 @@
         "default": "Google_Work+Sans_600_sans",
         "options": [
           {
-            "value": "'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, 'AppleGothic', sans-serif",
+            "value":
+              "'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, 'AppleGothic', sans-serif",
             "label": "Avant Garde",
             "group": "Sans-serif"
           },
@@ -224,7 +225,8 @@
             "group": "Sans-serif"
           },
           {
-            "value": "'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "value":
+              "'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
             "label": "Helvetica Neue",
             "group": "Sans-serif"
           },
@@ -234,7 +236,8 @@
             "group": "Sans-serif"
           },
           {
-            "value": "Candara, Calibri, Segoe, 'Segoe UI', Optima, Arial, sans-serif",
+            "value":
+              "Candara, Calibri, Segoe, 'Segoe UI', Optima, Arial, sans-serif",
             "label": "Candara",
             "group": "Sans-serif"
           },
@@ -344,27 +347,32 @@
             "group": "Sans-serif | Google Web Fonts"
           },
           {
-            "value": "'Big Caslon', 'Book Antiqua', 'Palatino Linotype', Georgia, serif",
+            "value":
+              "'Big Caslon', 'Book Antiqua', 'Palatino Linotype', Georgia, serif",
             "label": "Big Caslon",
             "group": "Serif"
           },
           {
-            "value": "'Calisto MT', 'Bookman Old Style', Bookman, 'Goudy Old Style', Garamond, 'Hoefler Text', 'Bitstream Charter', Georgia, serif",
+            "value":
+              "'Calisto MT', 'Bookman Old Style', Bookman, 'Goudy Old Style', Garamond, 'Hoefler Text', 'Bitstream Charter', Georgia, serif",
             "label": "Calisto MT",
             "group": "Serif"
           },
           {
-            "value": "Baskerville, 'Baskerville Old Face', 'Hoefler Text', Garamond, 'Times New Roman', serif",
+            "value":
+              "Baskerville, 'Baskerville Old Face', 'Hoefler Text', Garamond, 'Times New Roman', serif",
             "label": "Baskerville",
             "group": "Serif"
           },
           {
-            "value": "Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif",
+            "value":
+              "Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif",
             "label": "Garamond",
             "group": "Serif"
           },
           {
-            "value": "TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, serif",
+            "value":
+              "TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, serif",
             "label": "Times New Roman",
             "group": "Serif"
           },
@@ -477,7 +485,8 @@
         "default": "Google_Work+Sans_400_sans",
         "options": [
           {
-            "value": "'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, 'AppleGothic', sans-serif",
+            "value":
+              "'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, 'AppleGothic', sans-serif",
             "label": "Avant Garde",
             "group": "Sans-serif"
           },
@@ -487,7 +496,8 @@
             "group": "Sans-serif"
           },
           {
-            "value": "'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "value":
+              "'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
             "label": "Helvetica Neue",
             "group": "Sans-serif"
           },
@@ -497,7 +507,8 @@
             "group": "Sans-serif"
           },
           {
-            "value": "Candara, Calibri, Segoe, 'Segoe UI', Optima, Arial, sans-serif",
+            "value":
+              "Candara, Calibri, Segoe, 'Segoe UI', Optima, Arial, sans-serif",
             "label": "Candara",
             "group": "Sans-serif"
           },
@@ -602,22 +613,26 @@
             "group": "Sans-serif | Google Web Fonts"
           },
           {
-            "value": "'Big Caslon', 'Book Antiqua', 'Palatino Linotype', Georgia, serif",
+            "value":
+              "'Big Caslon', 'Book Antiqua', 'Palatino Linotype', Georgia, serif",
             "label": "Big Caslon",
             "group": "Serif"
           },
           {
-            "value": "'Calisto MT', 'Bookman Old Style', Bookman, 'Goudy Old Style', Garamond, 'Hoefler Text', 'Bitstream Charter', Georgia, serif",
+            "value":
+              "'Calisto MT', 'Bookman Old Style', Bookman, 'Goudy Old Style', Garamond, 'Hoefler Text', 'Bitstream Charter', Georgia, serif",
             "label": "Calisto MT",
             "group": "Serif"
           },
           {
-            "value": "Baskerville, 'Baskerville Old Face', 'Hoefler Text', Garamond, 'Times New Roman', serif",
+            "value":
+              "Baskerville, 'Baskerville Old Face', 'Hoefler Text', Garamond, 'Times New Roman', serif",
             "label": "Baskerville",
             "group": "Serif"
           },
           {
-            "value": "Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif",
+            "value":
+              "Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif",
             "label": "Garamond",
             "group": "Serif"
           },
@@ -627,7 +642,8 @@
             "group": "Serif"
           },
           {
-            "value": "TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, serif",
+            "value":
+              "TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, serif",
             "label": "Times New Roman",
             "group": "Serif"
           },
@@ -751,9 +767,12 @@
           "fr": "Image"
         },
         "info": {
-          "en": "Shown when sharing a link on social media. [Learn more](https:\/\/help.shopify.com\/manual\/using-themes\/troubleshooting\/showing-social-media-thumbnail-images\/) about image thumbnails.",
-          "de": "Wird gezeigt, wenn ein Link sozial geteilt wird. [Mehr erfahren](https:\/\/help.shopify.com\/manual\/using-themes\/troubleshooting\/showing-social-media-thumbnail-images\/)",
-          "fr": "Affichée lors du partage d'un lien sur les réseaux sociaux. [En savoir plus](https:\/\/help.shopify.com\/manual\/using-themes\/troubleshooting\/showing-social-media-thumbnail-images\/)."
+          "en":
+            "Shown when sharing a link on social media. [Learn more](https://help.shopify.com/manual/using-themes/troubleshooting/showing-social-media-thumbnail-images/) about image thumbnails.",
+          "de":
+            "Wird gezeigt, wenn ein Link sozial geteilt wird. [Mehr erfahren](https://help.shopify.com/manual/using-themes/troubleshooting/showing-social-media-thumbnail-images/)",
+          "fr":
+            "Affichée lors du partage d'un lien sur les réseaux sociaux. [En savoir plus](https://help.shopify.com/manual/using-themes/troubleshooting/showing-social-media-thumbnail-images/)."
         }
       },
       {
@@ -811,9 +830,9 @@
           "fr": "Twitter"
         },
         "info": {
-          "en": "https:\/\/twitter.com\/shopify",
-          "de": "https:\/\/twitter.com\/shopify",
-          "fr": "https:\/\/twitter.com\/shopify"
+          "en": "https://twitter.com/shopify",
+          "de": "https://twitter.com/shopify",
+          "fr": "https://twitter.com/shopify"
         }
       },
       {
@@ -825,9 +844,9 @@
           "fr": "Facebook"
         },
         "info": {
-          "en": "https:\/\/facebook.com\/shopify",
-          "de": "https:\/\/facebook.com\/shopify",
-          "fr": "https:\/\/facebook.com\/shopify"
+          "en": "https://facebook.com/shopify",
+          "de": "https://facebook.com/shopify",
+          "fr": "https://facebook.com/shopify"
         }
       },
       {
@@ -839,9 +858,9 @@
           "fr": "Pinterest"
         },
         "info": {
-          "en": "https:\/\/pinterest.com\/shopify",
-          "de": "https:\/\/pinterest.com\/shopify",
-          "fr": "https:\/\/pinterest.com\/shopify"
+          "en": "https://pinterest.com/shopify",
+          "de": "https://pinterest.com/shopify",
+          "fr": "https://pinterest.com/shopify"
         }
       },
       {
@@ -853,9 +872,9 @@
           "fr": "Instagram"
         },
         "info": {
-          "en": "http:\/\/instagram.com\/shopify",
-          "de": "http:\/\/instagram.com\/shopify",
-          "fr": "http:\/\/instagram.com\/shopify"
+          "en": "http://instagram.com/shopify",
+          "de": "http://instagram.com/shopify",
+          "fr": "http://instagram.com/shopify"
         }
       },
       {
@@ -867,9 +886,9 @@
           "fr": "Tumblr"
         },
         "info": {
-          "en": "http:\/\/shopify.tumblr.com",
-          "de": "http:\/\/shopify.tumblr.com",
-          "fr": "http:\/\/shopify.tumblr.com"
+          "en": "http://shopify.tumblr.com",
+          "de": "http://shopify.tumblr.com",
+          "fr": "http://shopify.tumblr.com"
         }
       },
       {
@@ -881,9 +900,9 @@
           "fr": "Snapchat"
         },
         "info": {
-          "en": "https:\/\/www.snapchat.com\/add\/shopify",
-          "de": "https:\/\/www.snapchat.com\/add\/shopify",
-          "fr": "https:\/\/www.snapchat.com\/add\/shopify"
+          "en": "https://www.snapchat.com/add/shopify",
+          "de": "https://www.snapchat.com/add/shopify",
+          "fr": "https://www.snapchat.com/add/shopify"
         }
       },
       {
@@ -895,9 +914,9 @@
           "fr": "YouTube"
         },
         "info": {
-          "en": "https:\/\/www.youtube.com\/shopify",
-          "de": "https:\/\/www.youtube.com\/shopify",
-          "fr": "https:\/\/www.youtube.com\/shopify"
+          "en": "https://www.youtube.com/shopify",
+          "de": "https://www.youtube.com/shopify",
+          "fr": "https://www.youtube.com/shopify"
         }
       },
       {
@@ -909,9 +928,9 @@
           "fr": "Vimeo"
         },
         "info": {
-          "en": "https:\/\/vimeo.com\/shopify",
-          "de": "https:\/\/vimeo.com\/shopify",
-          "fr": "https:\/\/vimeo.com\/shopify"
+          "en": "https://vimeo.com/shopify",
+          "de": "https://vimeo.com/shopify",
+          "fr": "https://vimeo.com/shopify"
         }
       }
     ]
