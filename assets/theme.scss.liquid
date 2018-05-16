@@ -2415,13 +2415,13 @@ hr {
   border-bottom: 1px solid $color-border;
 }
 
-hr:last-of-type {
+{% comment %} hr:last-of-type {
     margin: $gutter-site-mobile 0 $gutter-site;
 }
 
 hr:first-of-type {
     margin: $gutter-site 0 $gutter-site-mobile;
-}
+} {% endcomment %}
 
 .hr--small {
   padding: 10px 0;
@@ -5203,10 +5203,8 @@ $toolbar-height-small: 46px;
 
 .site-footer__social-icons,
 .site-footer__copyright {
-  margin-top: $section-spacing-small;
 
   @include media-query($medium-up) {
-    margin-top: $section-spacing;
   }
 }
 

@@ -16,7 +16,7 @@ assets/password.js:
 assets/theme.js:
   development: 2018-05-15T09:20:04-04:00   1ebaf0eab42cd14d4965bf8e465040bb
 assets/theme.scss.liquid:
-  development: 2018-05-16T08:32:26-04:00   8df762fcb70a365a0aedd1d222f39945
+  development: 2018-05-16T08:54:07-04:00   5e4edc8c63d83eed1b3f1f1fd51ec8f2
 assets/vendor.js:
   development: 2018-05-15T09:20:04-04:00   465fb5b94497c1cdcd55ba6cb04ffeb2
 config/settings_data.json:
@@ -224,7 +224,7 @@ snippets/product-price.liquid:
 snippets/search-form.liquid:
   development: 2018-05-15T09:20:07-04:00   28a50f2542fd28c27fd3eb50ae816c46
 snippets/site-nav.liquid:
-  development: 2018-05-16T07:08:02-04:00   9e11a15bd2a1d749caa02826c4619121
+  development: 2018-05-16T09:09:45-04:00   fd9d7d76c60a7c89de5ea9caf06ff6e8
 snippets/social-meta-tags.liquid:
   development: 2018-05-15T09:20:07-04:00   ae9e213401623b2601abf0ace8e21537
 snippets/social-sharing.liquid:
