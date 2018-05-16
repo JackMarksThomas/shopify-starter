@@ -17,6 +17,7 @@
 
 <footer class="site-footer" role="contentinfo">
   <div class="page-width">
+  <hr>
     <div class="grid grid--no-gutters">
       <div class="grid__item{% if section.settings.footer_newsletter_enable and section.settings.footer_linklist_two != blank %} medium-up--one-quarter{% elsif section.settings.footer_linklist_two == blank and section.settings.footer_newsletter_enable %} medium-up--one-half{% else %} text-center{% endif %}">
         {% if linklists[section.settings.footer_linklist].links.size > 0 %}
@@ -80,6 +81,7 @@
         </div>
       {% endif %}
     </div>
+    <hr>
 
     <div class="grid grid--no-gutters">
       {% if social_icons %}
@@ -165,7 +167,6 @@
         <div class="site-footer__copyright{% if social_icons and section.settings.footer_newsletter_enable != blank %} site-footer__copyright--right medium-up--text-right{% elsif social_icons == false and section.settings.footer_newsletter_enable %} medium-up--text-left{% endif %}">
           {% unless social_icons and section.settings.footer_newsletter_enable and section.settings.show_payment_icons %}
             <small class="site-footer__copyright-content">&copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}</small>
-            <small class="site-footer__copyright-content site-footer__copyright-content--powered-by">{{ powered_by_link }}</small>
           {% endunless %}
           {% if section.settings.show_payment_icons %}
             <div class="site-footer__payment-icons{% unless social_icons or section.settings.footer_newsletter_enable == blank %} site-footer__payment-icons--right{% endunless %}">
@@ -190,7 +191,6 @@
     {% if social_icons and section.settings.footer_newsletter_enable and section.settings.show_payment_icons %}
       <div class="site-footer__copyright--bottom">
         <small class="site-footer__copyright-content">&copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}</small>
-        <small class="site-footer__copyright-content">{{ powered_by_link }}</small>
       </div>
     {% endif %}
   </div>

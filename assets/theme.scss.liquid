@@ -2415,6 +2415,14 @@ hr {
   border-bottom: 1px solid $color-border;
 }
 
+hr:last-of-type {
+    margin: $gutter-site-mobile 0 $gutter-site;
+}
+
+hr:first-of-type {
+    margin: $gutter-site 0 $gutter-site-mobile;
+}
+
 .hr--small {
   padding: 10px 0;
   margin: 0;
@@ -5157,17 +5165,14 @@ $toolbar-height-small: 46px;
 
 @include media-query($medium-up) {
   .site-footer__linklist--center {
-    margin-top: $section-spacing-small;
     padding-right: 0;
   }
 }
 
 .site-footer__linklist,
 .site-footer__newsletter {
-  margin-top: $section-spacing-small;
 
   @include media-query($medium-up) {
-    margin-top: $section-spacing;
   }
 }
 
@@ -5187,11 +5192,11 @@ $toolbar-height-small: 46px;
 }
 
 .site-footer__newsletter {
-  margin: $section-spacing-small auto 0;
+  margin: 0 auto 0;
   max-width: 320px;
 
   @include media-query($medium-up) {
-    margin: $section-spacing 0 0;
+    margin: 0 0 0;
     max-width: none;
   }
 }
