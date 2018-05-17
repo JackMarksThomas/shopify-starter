@@ -67,12 +67,24 @@
       </li>
     {% endif %}
   {% endfor %}
-  <a href="/cart">
-            {% comment %} {% include 'icon-cart' %} {% endcomment %}
-              {% if cart.item_count > 0 %}
-                My Cart: (<strong> {{ cart.item_count }} </strong>)
-              {% else %}
-                My Cart: (😒)
-              {% endif %}
-          </a>
+  {% if shop.customer_accounts_enabled %}
+    {% if customer %}
+      <a href="/account" class="nav-extras">
+        {% include 'icon-login' %}
+        <span class="icon__fallback-text">{{ 'layout.customer.account' | t }}</span>
+      </a>
+    {% else %}
+      <a href="/account/login" class="nav-extras">
+        {% include 'icon-login' %}
+        <span class="icon__fallback-text">{{ 'layout.customer.log_in' | t }}</span>
+      </a>
+    {% endif %}
+  {% endif %}
+  <a href="/cart" class="nav-extras">
+    {% if cart.item_count > 0 %}
+      My Cart: (<strong> {{ cart.item_count }} </strong>)
+    {% else %}
+      My Cart: (😒)
+    {% endif %}
+  </a>
 </ul>

@@ -18,7 +18,7 @@
 {% paginate collection.products by limit %}
 
 <div data-section-id="{{ section.id }}" data-section-type="collection-template">
-  <header class="collection-header">
+  {% comment %}header class="collection-header">
 
     {% if section.settings.show_collection_image and collection.image %}
       <div class="collection-hero">
@@ -137,6 +137,7 @@
       </div>
     {% endif %}
   </header>
+  {% endcomment %}
 
   <div class="page-width" id="Collection">
     {% if section.settings.layout == 'grid' %}
@@ -150,6 +151,16 @@
       {% when 5 %}
         {%- assign grid_item_width = 'small--one-half medium-up--one-fifth' -%}
       {% endcase %}
+
+      {% if linklists.sidebar-menu.links.size > 0 %}
+        <ul id="sidebar-menu"class="sidebar-menu">
+            {% for link in linklists.sidebar-menu.links %}
+              <li class="">
+                <a href="{{ link.url }}"{% if link.active %} aria-current="page"{% endif %}>{{ link.title }}</a>
+              </li>
+            {% endfor %}
+        </ul>
+      {% endif %}
 
       <div class="grid grid--uniform{% if collection.products_count > 0 %} grid--view-items{% endif %}">
         {% for product in collection.products %}

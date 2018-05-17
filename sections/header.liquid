@@ -92,7 +92,7 @@
         {% endif %}
           {% if section.settings.logo %}
             {%- assign img_url = section.settings.logo | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-            <a href="/" class="site-header__logo-image{% if section.settings.align_logo == 'center' %} site-header__logo-image--centered{% endif %}">
+            <a href="/collections/all" class="site-header__logo-image{% if section.settings.align_logo == 'center' %} site-header__logo-image--centered{% endif %}">
               {% capture logo_alt %}{{ section.settings.logo.alt | default: shop.name }}{% endcapture %}
               <img class="lazyload js"
                    src="{{ section.settings.logo | img_url: '300x300' }}"
@@ -111,7 +111,7 @@
               </noscript>
             </a>
           {% else %}
-            <a class="site-header__logo-link" href="/">{{ shop.name }}</a>
+            <a class="site-header__logo-link" href="/collections/all">{{ shop.name }}</a>
           {% endif %}
         {% if template.name == 'index' %}
           </h1>
@@ -138,7 +138,7 @@
             {% include 'icon-search' %}
             <span class="icon__fallback-text">{{ 'layout.navigation.search' | t }}</span>
           </button> {% endcomment %}
-          <a href="/cart" class="medium-up--hide">
+          <a href="/cart" class="medium-up--hide nav-extras">
             {% if cart.item_count > 0 %}
                 My Cart: (<strong> {{ cart.item_count }} </strong>)
               {% else %}
@@ -147,12 +147,12 @@
           </a>
           {% if shop.customer_accounts_enabled %}
             {% if customer %}
-              <a href="/account" class="site-header__account">
+              <a class="medium-up--hide site-header__account nav-extras" href="/account">
                 {% include 'icon-login' %}
                 <span class="icon__fallback-text">{{ 'layout.customer.account' | t }}</span>
               </a>
             {% else %}
-              <a href="/account/login" class="site-header__account">
+              <a class="medium-up--hide site-header__account nav-extras" href="/account/login">
                 {% include 'icon-login' %}
                 <span class="icon__fallback-text">{{ 'layout.customer.log_in' | t }}</span>
               </a>

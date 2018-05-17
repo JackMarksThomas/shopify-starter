@@ -16,7 +16,7 @@ assets/password.js:
 assets/theme.js:
   development: 2018-05-15T09:20:04-04:00   1ebaf0eab42cd14d4965bf8e465040bb
 assets/theme.scss.liquid:
-  development: 2018-05-16T08:54:07-04:00   5e4edc8c63d83eed1b3f1f1fd51ec8f2
+  development: 2018-05-17T14:47:20-04:00   af1bdbc2f3809ad8a4d09e9e88eddc70
 assets/vendor.js:
   development: 2018-05-15T09:20:04-04:00   465fb5b94497c1cdcd55ba6cb04ffeb2
 config/settings_data.json:
@@ -54,7 +54,7 @@ sections/cart-template.liquid:
 sections/collection-list.liquid:
   development: 2018-05-15T09:20:02-04:00   8da2d9a0eab92a9e7959b7fb1c579975
 sections/collection-template.liquid:
-  development: 2018-05-15T09:20:02-04:00   cae7987ab5b77479601d859b9a9b6e14
+  development: 2018-05-17T14:13:08-04:00   48db121f3f4d8e4b296a80d88b382f20
 sections/collection.liquid:
   development: 2018-05-16T07:15:15-04:00   b41a9d7edbb27db109cb50d93d0accab
 sections/custom-content.liquid:
@@ -68,9 +68,9 @@ sections/featured-blog.liquid:
 sections/featured-product.liquid:
   development: 2018-05-15T09:20:02-04:00   b6fc397dab732fbe121a46aeefad7d43
 sections/footer.liquid:
-  development: 2018-05-16T08:28:17-04:00   6b96f1b214049e0a1aaa42aad75874b7
+  development: 2018-05-17T07:04:13-04:00   2f9e6b99c95ebab577bb40c85e84b823
 sections/header.liquid:
-  development: 2018-05-16T09:15:46-04:00   18c52253615e82e1d8664585eb6a2404
+  development: 2018-05-17T14:46:16-04:00   f1faacadc25f203ffaacf80388a7d7a1
 sections/hero.liquid:
   development: 2018-05-15T09:20:02-04:00   b75948d15b81b97297a923bc6ed33fc4
 sections/image-bar.liquid:
@@ -224,7 +224,7 @@ snippets/product-price.liquid:
 snippets/search-form.liquid:
   development: 2018-05-15T09:20:07-04:00   28a50f2542fd28c27fd3eb50ae816c46
 snippets/site-nav.liquid:
-  development: 2018-05-16T09:15:58-04:00   81ebbd068d98ba72ee96ef58c550b13d
+  development: 2018-05-17T14:45:05-04:00   27a6238100a3852d90940e1fb896f189
 snippets/social-meta-tags.liquid:
   development: 2018-05-15T09:20:07-04:00   ae9e213401623b2601abf0ace8e21537
 snippets/social-sharing.liquid:
