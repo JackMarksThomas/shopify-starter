@@ -14,9 +14,9 @@ assets/match-media.min.js:
 assets/password.js:
   development: 2018-05-15T09:20:04-04:00   d826da9cb223a44d53a0c34f457e92dc
 assets/theme.js:
-  development: 2018-05-15T09:20:04-04:00   1ebaf0eab42cd14d4965bf8e465040bb
+  development: 2018-05-18T05:09:31-04:00   976944fdf3e35b2fcc872476bb836014
 assets/theme.scss.liquid:
-  development: 2018-05-17T14:47:20-04:00   af1bdbc2f3809ad8a4d09e9e88eddc70
+  development: 2018-05-18T05:24:39-04:00   a8757bf4a35a40116903da56f16d3397
 assets/vendor.js:
   development: 2018-05-15T09:20:04-04:00   465fb5b94497c1cdcd55ba6cb04ffeb2
 config/settings_data.json:
@@ -54,7 +54,7 @@ sections/cart-template.liquid:
 sections/collection-list.liquid:
   development: 2018-05-15T09:20:02-04:00   8da2d9a0eab92a9e7959b7fb1c579975
 sections/collection-template.liquid:
-  development: 2018-05-17T14:13:08-04:00   48db121f3f4d8e4b296a80d88b382f20
+  development: 2018-05-18T05:13:20-04:00   b281ffb7e54366f6463ab88952877fb3
 sections/collection.liquid:
   development: 2018-05-16T07:15:15-04:00   b41a9d7edbb27db109cb50d93d0accab
 sections/custom-content.liquid:
@@ -230,7 +230,7 @@ snippets/social-meta-tags.liquid:
 snippets/social-sharing.liquid:
   development: 2018-05-15T09:20:07-04:00   011dd5c58fa718c8016b784f2d9fa92b
 templates/404.liquid:
-  development: 2018-05-15T09:20:07-04:00   805b16263cdf5c85be9c507ad6b03623
+  development: 2018-05-18T04:48:16-04:00   78ff5bec2d9f378feaaef3bb5188aa0d
 templates/article.liquid:
   development: 2018-05-15T09:20:07-04:00   7c31b2aef34a1be542f39efb9e24c13b
 templates/blog.liquid:

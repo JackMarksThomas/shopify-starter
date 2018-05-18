@@ -8,19 +8,19 @@ theme.Sections = function Sections() {
   this.instances = [];
 
   $(document)
-    .on('shopify:section:load', this._onSectionLoad.bind(this))
-    .on('shopify:section:unload', this._onSectionUnload.bind(this))
-    .on('shopify:section:select', this._onSelect.bind(this))
-    .on('shopify:section:deselect', this._onDeselect.bind(this))
-    .on('shopify:block:select', this._onBlockSelect.bind(this))
-    .on('shopify:block:deselect', this._onBlockDeselect.bind(this));
+    .on("shopify:section:load", this._onSectionLoad.bind(this))
+    .on("shopify:section:unload", this._onSectionUnload.bind(this))
+    .on("shopify:section:select", this._onSelect.bind(this))
+    .on("shopify:section:deselect", this._onDeselect.bind(this))
+    .on("shopify:block:select", this._onBlockSelect.bind(this))
+    .on("shopify:block:deselect", this._onBlockDeselect.bind(this));
 };
 
 theme.Sections.prototype = _.assignIn({}, theme.Sections.prototype, {
   _createInstance: function(container, constructor) {
     var $container = $(container);
-    var id = $container.attr('data-section-id');
-    var type = $container.attr('data-section-type');
+    var id = $container.attr("data-section-id");
+    var type = $container.attr("data-section-type");
 
     constructor = constructor || this.constructors[type];
 
@@ -38,7 +38,7 @@ theme.Sections.prototype = _.assignIn({}, theme.Sections.prototype, {
   },
 
   _onSectionLoad: function(evt) {
-    var container = $('[data-section-id]', evt.target)[0];
+    var container = $("[data-section-id]", evt.target)[0];
     if (container) {
       this._createInstance(container);
     }
@@ -105,7 +105,7 @@ theme.Sections.prototype = _.assignIn({}, theme.Sections.prototype, {
   register: function(type, constructor) {
     this.constructors[type] = constructor;
 
-    $('[data-section-type=' + type + ']').each(
+    $("[data-section-type=" + type + "]").each(
       function(index, container) {
         this._createInstance(container, constructor);
       }.bind(this)
@@ -179,20 +179,20 @@ slate.a11y = {
    * @param {JQuery} $element - The element to be acted upon
    */
   pageLinkFocus: function($element) {
-    var focusClass = 'js-focus-hidden';
+    var focusClass = "js-focus-hidden";
 
     $element
       .first()
-      .attr('tabIndex', '-1')
+      .attr("tabIndex", "-1")
       .focus()
       .addClass(focusClass)
-      .one('blur', callback);
+      .one("blur", callback);
 
     function callback() {
       $element
         .first()
         .removeClass(focusClass)
-        .removeAttr('tabindex');
+        .removeAttr("tabindex");
     }
   },
 
@@ -212,8 +212,8 @@ slate.a11y = {
    * When an in-page (url w/hash) link is clicked, focus the appropriate element
    */
   bindInPageLinks: function() {
-    $('a[href*=#]').on(
-      'click',
+    $("a[href*=#]").on(
+      "click",
       function(evt) {
         this.pageLinkFocus($(evt.currentTarget.hash));
       }.bind(this)
@@ -230,17 +230,17 @@ slate.a11y = {
    */
   trapFocus: function(options) {
     var eventName = options.namespace
-      ? 'focusin.' + options.namespace
-      : 'focusin';
+      ? "focusin." + options.namespace
+      : "focusin";
 
     if (!options.$elementToFocus) {
       options.$elementToFocus = options.$container;
     }
 
-    options.$container.attr('tabindex', '-1');
+    options.$container.attr("tabindex", "-1");
     options.$elementToFocus.focus();
 
-    $(document).off('focusin');
+    $(document).off("focusin");
 
     $(document).on(eventName, function(evt) {
       if (
@@ -261,11 +261,11 @@ slate.a11y = {
    */
   removeTrapFocus: function(options) {
     var eventName = options.namespace
-      ? 'focusin.' + options.namespace
-      : 'focusin';
+      ? "focusin." + options.namespace
+      : "focusin";
 
     if (options.$container && options.$container.length) {
-      options.$container.removeAttr('tabindex');
+      options.$container.removeAttr("tabindex");
     }
 
     $(document).off(eventName);
@@ -288,7 +288,7 @@ theme.Images = (function() {
    */
 
   function preload(images, size) {
-    if (typeof images === 'string') {
+    if (typeof images === "string") {
       images = [images];
     }
 
@@ -359,7 +359,7 @@ theme.Images = (function() {
       return src;
     }
 
-    if (size === 'master') {
+    if (size === "master") {
       return this.removeProtocol(src);
     }
 
@@ -371,14 +371,14 @@ theme.Images = (function() {
       var prefix = src.split(match[0]);
       var suffix = match[0];
 
-      return this.removeProtocol(prefix[0] + '_' + size + suffix);
+      return this.removeProtocol(prefix[0] + "_" + size + suffix);
     }
 
     return null;
   }
 
   function removeProtocol(path) {
-    return path.replace(/http(s)?:/, '');
+    return path.replace(/http(s)?:/, "");
   }
 
   return {
@@ -405,19 +405,19 @@ theme.Images = (function() {
  */
 
 theme.Currency = (function() {
-  var moneyFormat = '${{amount}}'; // eslint-disable-line camelcase
+  var moneyFormat = "${{amount}}"; // eslint-disable-line camelcase
 
   function formatMoney(cents, format) {
-    if (typeof cents === 'string') {
-      cents = cents.replace('.', '');
+    if (typeof cents === "string") {
+      cents = cents.replace(".", "");
     }
-    var value = '';
+    var value = "";
     var placeholderRegex = /\{\{\s*(\w+)\s*\}\}/;
     var formatString = format || moneyFormat;
 
     function formatWithDelimiters(number, precision, thousands, decimal) {
-      thousands = thousands || ',';
-      decimal = decimal || '.';
+      thousands = thousands || ",";
+      decimal = decimal || ".";
 
       if (isNaN(number) || number === null) {
         return 0;
@@ -425,33 +425,33 @@ theme.Currency = (function() {
 
       number = (number / 100.0).toFixed(precision);
 
-      var parts = number.split('.');
+      var parts = number.split(".");
       var dollarsAmount = parts[0].replace(
         /(\d)(?=(\d\d\d)+(?!\d))/g,
-        '$1' + thousands
+        "$1" + thousands
       );
-      var centsAmount = parts[1] ? decimal + parts[1] : '';
+      var centsAmount = parts[1] ? decimal + parts[1] : "";
 
       return dollarsAmount + centsAmount;
     }
 
     switch (formatString.match(placeholderRegex)[1]) {
-      case 'amount':
+      case "amount":
         value = formatWithDelimiters(cents, 2);
         break;
-      case 'amount_no_decimals':
+      case "amount_no_decimals":
         value = formatWithDelimiters(cents, 0);
         break;
-      case 'amount_with_comma_separator':
-        value = formatWithDelimiters(cents, 2, '.', ',');
+      case "amount_with_comma_separator":
+        value = formatWithDelimiters(cents, 2, ".", ",");
         break;
-      case 'amount_no_decimals_with_comma_separator':
-        value = formatWithDelimiters(cents, 0, '.', ',');
+      case "amount_no_decimals_with_comma_separator":
+        value = formatWithDelimiters(cents, 0, ".", ",");
         break;
-      case 'amount_no_decimals_with_space_separator':
-        value = formatWithDelimiters(cents, 0, ' ');
+      case "amount_no_decimals_with_space_separator":
+        value = formatWithDelimiters(cents, 0, " ");
         break;
-      case 'amount_with_apostrophe_separator':
+      case "amount_with_apostrophe_separator":
         value = formatWithDelimiters(cents, 2, "'");
         break;
     }
@@ -490,7 +490,7 @@ slate.Variants = (function() {
     this.currentVariant = this._getVariantFromOptions();
 
     $(this.singleOptionSelector, this.$container).on(
-      'change',
+      "change",
       this._onSelectChange.bind(this)
     );
   }
@@ -507,13 +507,13 @@ slate.Variants = (function() {
         $(this.singleOptionSelector, this.$container),
         function(element) {
           var $element = $(element);
-          var type = $element.attr('type');
+          var type = $element.attr("type");
           var currentOption = {};
 
-          if (type === 'radio' || type === 'checkbox') {
+          if (type === "radio" || type === "checkbox") {
             if ($element[0].checked) {
               currentOption.value = $element.val();
-              currentOption.index = $element.data('index');
+              currentOption.index = $element.data("index");
 
               return currentOption;
             } else {
@@ -521,7 +521,7 @@ slate.Variants = (function() {
             }
           } else {
             currentOption.value = $element.val();
-            currentOption.index = $element.data('index');
+            currentOption.index = $element.data("index");
 
             return currentOption;
           }
@@ -560,7 +560,7 @@ slate.Variants = (function() {
       var variant = this._getVariantFromOptions();
 
       this.$container.trigger({
-        type: 'variantChange',
+        type: "variantChange",
         variant: variant
       });
 
@@ -597,7 +597,7 @@ slate.Variants = (function() {
       }
 
       this.$container.trigger({
-        type: 'variantImageChange',
+        type: "variantImageChange",
         variant: variant
       });
     },
@@ -617,7 +617,7 @@ slate.Variants = (function() {
       }
 
       this.$container.trigger({
-        type: 'variantPriceChange',
+        type: "variantPriceChange",
         variant: variant
       });
     },
@@ -634,7 +634,7 @@ slate.Variants = (function() {
       }
 
       this.$container.trigger({
-        type: 'variantSKUChange',
+        type: "variantSKUChange",
         variant: variant
       });
     },
@@ -652,12 +652,12 @@ slate.Variants = (function() {
 
       var newurl =
         window.location.protocol +
-        '//' +
+        "//" +
         window.location.host +
         window.location.pathname +
-        '?variant=' +
+        "?variant=" +
         variant.id;
-      window.history.replaceState({ path: newurl }, '', newurl);
+      window.history.replaceState({ path: newurl }, "", newurl);
     },
 
     /**
@@ -673,7 +673,6 @@ slate.Variants = (function() {
   return Variants;
 })();
 
-
 /* ================ GLOBAL ================ */
 /*============================================================================
   Drawer modules
@@ -681,21 +680,21 @@ slate.Variants = (function() {
 theme.Drawers = (function() {
   function Drawer(id, position, options) {
     var defaults = {
-      close: '.js-drawer-close',
-      open: '.js-drawer-open-' + position,
-      openClass: 'js-drawer-open',
-      dirOpenClass: 'js-drawer-open-' + position
+      close: ".js-drawer-close",
+      open: ".js-drawer-open-" + position,
+      openClass: "js-drawer-open",
+      dirOpenClass: "js-drawer-open-" + position
     };
 
     this.nodes = {
-      $parent: $('html').add('body'),
-      $page: $('#PageContainer')
+      $parent: $("html").add("body"),
+      $page: $("#PageContainer")
     };
 
     this.config = $.extend(defaults, options);
     this.position = position;
 
-    this.$drawer = $('#' + id);
+    this.$drawer = $("#" + id);
 
     if (!this.$drawer.length) {
       return false;
@@ -706,8 +705,8 @@ theme.Drawers = (function() {
   }
 
   Drawer.prototype.init = function() {
-    $(this.config.open).on('click', $.proxy(this.open, this));
-    this.$drawer.on('click', this.config.close, $.proxy(this.close, this));
+    $(this.config.open).on("click", $.proxy(this.open, this));
+    this.$drawer.on("click", this.config.close, $.proxy(this.close, this));
   };
 
   Drawer.prototype.open = function(evt) {
@@ -738,28 +737,28 @@ theme.Drawers = (function() {
     this.$drawer.prepareTransition();
 
     this.nodes.$parent.addClass(
-      this.config.openClass + ' ' + this.config.dirOpenClass
+      this.config.openClass + " " + this.config.dirOpenClass
     );
     this.drawerIsOpen = true;
 
     // Set focus on drawer
     slate.a11y.trapFocus({
       $container: this.$drawer,
-      namespace: 'drawer_focus'
+      namespace: "drawer_focus"
     });
 
     // Run function when draw opens if set
     if (
       this.config.onDrawerOpen &&
-      typeof this.config.onDrawerOpen === 'function'
+      typeof this.config.onDrawerOpen === "function"
     ) {
       if (!externalCall) {
         this.config.onDrawerOpen();
       }
     }
 
-    if (this.$activeSource && this.$activeSource.attr('aria-expanded')) {
-      this.$activeSource.attr('aria-expanded', 'true');
+    if (this.$activeSource && this.$activeSource.attr("aria-expanded")) {
+      this.$activeSource.attr("aria-expanded", "true");
     }
 
     this.bindEvents();
@@ -774,17 +773,17 @@ theme.Drawers = (function() {
     }
 
     // deselect any focused form elements
-    $(document.activeElement).trigger('blur');
+    $(document.activeElement).trigger("blur");
 
     // Ensure closing transition is applied to moved elements, like the nav
     this.$drawer.prepareTransition();
 
     this.nodes.$parent.removeClass(
-      this.config.dirOpenClass + ' ' + this.config.openClass
+      this.config.dirOpenClass + " " + this.config.openClass
     );
 
-    if (this.$activeSource && this.$activeSource.attr('aria-expanded')) {
-      this.$activeSource.attr('aria-expanded', 'false');
+    if (this.$activeSource && this.$activeSource.attr("aria-expanded")) {
+      this.$activeSource.attr("aria-expanded", "false");
     }
 
     this.drawerIsOpen = false;
@@ -792,7 +791,7 @@ theme.Drawers = (function() {
     // Remove focus on drawer
     slate.a11y.removeTrapFocus({
       $container: this.$drawer,
-      namespace: 'drawer_focus'
+      namespace: "drawer_focus"
     });
 
     this.unbindEvents();
@@ -800,7 +799,7 @@ theme.Drawers = (function() {
     // Run function when draw closes if set
     if (
       this.config.onDrawerClose &&
-      typeof this.config.onDrawerClose === 'function'
+      typeof this.config.onDrawerClose === "function"
     ) {
       this.config.onDrawerClose();
     }
@@ -808,7 +807,7 @@ theme.Drawers = (function() {
 
   Drawer.prototype.bindEvents = function() {
     this.nodes.$parent.on(
-      'keyup.drawer',
+      "keyup.drawer",
       $.proxy(function(evt) {
         // close on 'esc' keypress
         if (evt.keyCode === 27) {
@@ -821,12 +820,12 @@ theme.Drawers = (function() {
     );
 
     // Lock scrolling on mobile
-    this.nodes.$page.on('touchmove.drawer', function() {
+    this.nodes.$page.on("touchmove.drawer", function() {
       return false;
     });
 
     this.nodes.$page.on(
-      'click.drawer',
+      "click.drawer",
       $.proxy(function() {
         this.close();
         return false;
@@ -835,31 +834,30 @@ theme.Drawers = (function() {
   };
 
   Drawer.prototype.unbindEvents = function() {
-    this.nodes.$page.off('.drawer');
-    this.nodes.$parent.off('.drawer');
+    this.nodes.$page.off(".drawer");
+    this.nodes.$parent.off(".drawer");
   };
 
   return Drawer;
 })();
-
 
 /* ================ MODULES ================ */
 window.theme = window.theme || {};
 
 theme.Header = (function() {
   var selectors = {
-    body: 'body',
-    navigation: '#AccessibleNav',
-    siteNavHasDropdown: '.site-nav--has-dropdown',
-    siteNavChildLinks: '.site-nav__child-link',
-    siteNavActiveDropdown: '.site-nav--active-dropdown',
-    siteNavLinkMain: '.site-nav__link--main',
-    siteNavChildLink: '.site-nav__link--last'
+    body: "body",
+    navigation: "#AccessibleNav",
+    siteNavHasDropdown: ".site-nav--has-dropdown",
+    siteNavChildLinks: ".site-nav__child-link",
+    siteNavActiveDropdown: ".site-nav--active-dropdown",
+    siteNavLinkMain: ".site-nav__link--main",
+    siteNavChildLink: ".site-nav__link--last"
   };
 
   var config = {
-    activeClass: 'site-nav--active-dropdown',
-    childLinkClass: 'site-nav__child-link'
+    activeClass: "site-nav--active-dropdown",
+    childLinkClass: "site-nav__child-link"
   };
 
   var cache = {};
@@ -867,14 +865,14 @@ theme.Header = (function() {
   function init() {
     cacheSelectors();
 
-    cache.$parents.on('click.siteNav', function() {
+    cache.$parents.on("click.siteNav", function() {
       var $el = $(this);
 
       $el.hasClass(config.activeClass) ? hideDropdown($el) : showDropdown($el);
     });
 
     // check when we're leaving a dropdown and close the active dropdown
-    $(selectors.siteNavChildLink).on('focusout.siteNav', function() {
+    $(selectors.siteNavChildLink).on("focusout.siteNav", function() {
       setTimeout(function() {
         if (
           $(document.activeElement).hasClass(config.childLinkClass) ||
@@ -888,13 +886,13 @@ theme.Header = (function() {
     });
 
     // close dropdowns when on top level nav
-    cache.$topLevel.on('focus.siteNav', function() {
+    cache.$topLevel.on("focus.siteNav", function() {
       if (cache.$activeDropdown.length) {
         hideDropdown(cache.$activeDropdown);
       }
     });
 
-    cache.$subMenuLinks.on('click.siteNav', function(evt) {
+    cache.$subMenuLinks.on("click.siteNav", function(evt) {
       // Prevent click on body from firing instead of link
       evt.stopImmediatePropagation();
     });
@@ -921,16 +919,16 @@ theme.Header = (function() {
     cache.$activeDropdown = $el;
 
     // set expanded on open dropdown
-    $el.find(selectors.siteNavLinkMain).attr('aria-expanded', 'true');
+    $el.find(selectors.siteNavLinkMain).attr("aria-expanded", "true");
 
     setTimeout(function() {
-      $(window).on('keyup.siteNav', function(evt) {
+      $(window).on("keyup.siteNav", function(evt) {
         if (evt.keyCode === 27) {
           hideDropdown($el);
         }
       });
 
-      $(selectors.body).on('click.siteNav', function() {
+      $(selectors.body).on("click.siteNav", function() {
         hideDropdown($el);
       });
     }, 250);
@@ -938,23 +936,23 @@ theme.Header = (function() {
 
   function hideDropdown($el) {
     // remove aria on open dropdown
-    $el.find(selectors.siteNavLinkMain).attr('aria-expanded', 'false');
+    $el.find(selectors.siteNavLinkMain).attr("aria-expanded", "false");
     $el.removeClass(config.activeClass);
 
     // reset active dropdown
     cache.$activeDropdown = $(selectors.siteNavActiveDropdown);
 
-    $(selectors.body).off('click.siteNav');
-    $(window).off('keyup.siteNav');
+    $(selectors.body).off("click.siteNav");
+    $(window).off("keyup.siteNav");
   }
 
   function unload() {
-    $(window).off('.siteNav');
-    cache.$parents.off('.siteNav');
-    cache.$subMenuLinks.off('.siteNav');
-    cache.$topLevel.off('.siteNav');
-    $(selectors.siteNavChildLink).off('.siteNav');
-    $(selectors.body).off('.siteNav');
+    $(window).off(".siteNav");
+    cache.$parents.off(".siteNav");
+    cache.$subMenuLinks.off(".siteNav");
+    cache.$topLevel.off(".siteNav");
+    $(selectors.siteNavChildLink).off(".siteNav");
+    $(selectors.body).off(".siteNav");
   }
 
   return {
@@ -967,18 +965,18 @@ window.theme = window.theme || {};
 
 theme.MobileNav = (function() {
   var classes = {
-    mobileNavOpenIcon: 'mobile-nav--open',
-    mobileNavCloseIcon: 'mobile-nav--close',
-    navLinkWrapper: 'mobile-nav__item',
-    navLink: 'mobile-nav__link',
-    subNavLink: 'mobile-nav__sublist-link',
-    return: 'mobile-nav__return-btn',
-    subNavActive: 'is-active',
-    subNavClosing: 'is-closing',
-    navOpen: 'js-menu--is-open',
-    subNavShowing: 'sub-nav--is-open',
-    thirdNavShowing: 'third-nav--is-open',
-    subNavToggleBtn: 'js-toggle-submenu'
+    mobileNavOpenIcon: "mobile-nav--open",
+    mobileNavCloseIcon: "mobile-nav--close",
+    navLinkWrapper: "mobile-nav__item",
+    navLink: "mobile-nav__link",
+    subNavLink: "mobile-nav__sublist-link",
+    return: "mobile-nav__return-btn",
+    subNavActive: "is-active",
+    subNavClosing: "is-closing",
+    navOpen: "js-menu--is-open",
+    subNavShowing: "sub-nav--is-open",
+    thirdNavShowing: "third-nav--is-open",
+    subNavToggleBtn: "js-toggle-submenu"
   };
   var cache = {};
   var isTransitioning;
@@ -986,13 +984,13 @@ theme.MobileNav = (function() {
   var $activeTrigger;
   var menuLevel = 1;
   // Breakpoints from src/stylesheets/global/variables.scss.liquid
-  var mediaQuerySmall = 'screen and (max-width: 749px)';
+  var mediaQuerySmall = "screen and (max-width: 749px)";
 
   function init() {
     cacheSelectors();
 
-    cache.$mobileNavToggle.on('click', toggleMobileNav);
-    cache.$subNavToggleBtn.on('click.subNav', toggleSubNav);
+    cache.$mobileNavToggle.on("click", toggleMobileNav);
+    cache.$subNavToggleBtn.on("click.subNav", toggleSubNav);
 
     // Close mobile nav when unmatching mobile breakpoint
     enquire.register(mediaQuerySmall, {
@@ -1012,13 +1010,13 @@ theme.MobileNav = (function() {
 
   function cacheSelectors() {
     cache = {
-      $pageContainer: $('#PageContainer'),
-      $siteHeader: $('.site-header'),
-      $mobileNavToggle: $('.js-mobile-nav-toggle'),
-      $mobileNavContainer: $('.mobile-nav-wrapper'),
-      $mobileNav: $('#MobileNav'),
-      $sectionHeader: $('#shopify-section-header'),
-      $subNavToggleBtn: $('.' + classes.subNavToggleBtn)
+      $pageContainer: $("#PageContainer"),
+      $siteHeader: $(".site-header"),
+      $mobileNavToggle: $(".js-mobile-nav-toggle"),
+      $mobileNavContainer: $(".mobile-nav-wrapper"),
+      $mobileNav: $("#MobileNav"),
+      $sectionHeader: $("#shopify-section-header"),
+      $subNavToggleBtn: $("." + classes.subNavToggleBtn)
     };
   }
 
@@ -1029,27 +1027,27 @@ theme.MobileNav = (function() {
     cache.$mobileNavContainer.prepareTransition().addClass(classes.navOpen);
 
     cache.$mobileNavContainer.css({
-      transform: 'translateY(' + translateHeaderHeight + 'px)'
+      transform: "translateY(" + translateHeaderHeight + "px)"
     });
 
     cache.$pageContainer.css({
       transform:
-        'translate3d(0, ' + cache.$mobileNavContainer[0].scrollHeight + 'px, 0)'
+        "translate3d(0, " + cache.$mobileNavContainer[0].scrollHeight + "px, 0)"
     });
 
     slate.a11y.trapFocus({
       $container: cache.$sectionHeader,
       $elementToFocus: cache.$mobileNavToggle,
-      namespace: 'navFocus'
+      namespace: "navFocus"
     });
 
     cache.$mobileNavToggle
       .addClass(classes.mobileNavCloseIcon)
       .removeClass(classes.mobileNavOpenIcon)
-      .attr('aria-expanded', true);
+      .attr("aria-expanded", true);
 
     // close on escape
-    $(window).on('keyup.mobileNav', function(evt) {
+    $(window).on("keyup.mobileNav", function(evt) {
       if (evt.which === 27) {
         closeMobileNav();
       }
@@ -1060,22 +1058,22 @@ theme.MobileNav = (function() {
     cache.$mobileNavContainer.prepareTransition().removeClass(classes.navOpen);
 
     cache.$mobileNavContainer.css({
-      transform: 'translateY(-100%)'
+      transform: "translateY(-100%)"
     });
 
-    cache.$pageContainer.removeAttr('style');
+    cache.$pageContainer.removeAttr("style");
 
     slate.a11y.trapFocus({
-      $container: $('html'),
-      $elementToFocus: $('body')
+      $container: $("html"),
+      $elementToFocus: $("body")
     });
 
     cache.$mobileNavContainer.one(
-      'TransitionEnd.navToggle webkitTransitionEnd.navToggle transitionend.navToggle oTransitionEnd.navToggle',
+      "TransitionEnd.navToggle webkitTransitionEnd.navToggle transitionend.navToggle oTransitionEnd.navToggle",
       function() {
         slate.a11y.removeTrapFocus({
           $container: cache.$mobileNav,
-          namespace: 'navFocus'
+          namespace: "navFocus"
         });
       }
     );
@@ -1083,10 +1081,10 @@ theme.MobileNav = (function() {
     cache.$mobileNavToggle
       .addClass(classes.mobileNavOpenIcon)
       .removeClass(classes.mobileNavCloseIcon)
-      .attr('aria-expanded', false)
+      .attr("aria-expanded", false)
       .focus();
 
-    $(window).off('keyup.mobileNav');
+    $(window).off("keyup.mobileNav");
 
     scrollTo(0, 0);
   }
@@ -1103,7 +1101,7 @@ theme.MobileNav = (function() {
     if (isReturn) {
       // Close all subnavs by removing active class on buttons
       $(
-        '.' + classes.subNavToggleBtn + '[data-level="' + (menuLevel - 1) + '"]'
+        "." + classes.subNavToggleBtn + '[data-level="' + (menuLevel - 1) + '"]'
       ).removeClass(classes.subNavActive);
 
       if ($activeTrigger && $activeTrigger.length) {
@@ -1115,7 +1113,7 @@ theme.MobileNav = (function() {
 
     $activeTrigger = $toggleBtn;
 
-    goToSubnav($toggleBtn.data('target'));
+    goToSubnav($toggleBtn.data("target"));
   }
 
   function goToSubnav(target) {
@@ -1125,7 +1123,7 @@ theme.MobileNav = (function() {
       ? $('.mobile-nav__dropdown[data-parent="' + target + '"]')
       : cache.$mobileNav;
 
-    menuLevel = $targetMenu.data('level') ? $targetMenu.data('level') : 1;
+    menuLevel = $targetMenu.data("level") ? $targetMenu.data("level") : 1;
 
     if ($activeSubNav && $activeSubNav.length) {
       $activeSubNav.prepareTransition().addClass(classes.subNavClosing);
@@ -1141,7 +1139,7 @@ theme.MobileNav = (function() {
       menuLevel > 2 ? classes.thirdNavShowing : classes.subNavShowing;
 
     cache.$mobileNavContainer
-      .css('height', translateMenuHeight)
+      .css("height", translateMenuHeight)
       .removeClass(classes.thirdNavShowing)
       .addClass(openNavClass);
 
@@ -1155,27 +1153,27 @@ theme.MobileNav = (function() {
     /* if going back to first subnav, focus is on whole header */
     var $container = menuLevel === 1 ? cache.$sectionHeader : $targetMenu;
 
-    var $menuTitle = $targetMenu.find('[data-menu-title=' + menuLevel + ']');
+    var $menuTitle = $targetMenu.find("[data-menu-title=" + menuLevel + "]");
     var $elementToFocus = $menuTitle ? $menuTitle : $targetMenu;
 
     // Focusing an item in the subnav early forces element into view and breaks the animation.
     cache.$mobileNavContainer.one(
-      'TransitionEnd.subnavToggle webkitTransitionEnd.subnavToggle transitionend.subnavToggle oTransitionEnd.subnavToggle',
+      "TransitionEnd.subnavToggle webkitTransitionEnd.subnavToggle transitionend.subnavToggle oTransitionEnd.subnavToggle",
       function() {
         slate.a11y.trapFocus({
           $container: $container,
           $elementToFocus: $elementToFocus,
-          namespace: 'subNavFocus'
+          namespace: "subNavFocus"
         });
 
-        cache.$mobileNavContainer.off('.subnavToggle');
+        cache.$mobileNavContainer.off(".subnavToggle");
         isTransitioning = false;
       }
     );
 
     // Match height of subnav
     cache.$pageContainer.css({
-      transform: 'translateY(' + translateMenuHeight + 'px)'
+      transform: "translateY(" + translateMenuHeight + "px)"
     });
 
     $activeSubNav.removeClass(classes.subNavClosing);
@@ -1191,27 +1189,27 @@ window.theme = window.theme || {};
 
 theme.Search = (function() {
   var selectors = {
-    search: '.search',
-    searchSubmit: '.search__submit',
-    searchInput: '.search__input',
+    search: ".search",
+    searchSubmit: ".search__submit",
+    searchInput: ".search__input",
 
-    siteHeader: '.site-header',
-    siteHeaderSearchToggle: '.site-header__search-toggle',
-    siteHeaderSearch: '.site-header__search',
+    siteHeader: ".site-header",
+    siteHeaderSearchToggle: ".site-header__search-toggle",
+    siteHeaderSearch: ".site-header__search",
 
-    searchDrawer: '.search-bar',
-    searchDrawerInput: '.search-bar__input',
+    searchDrawer: ".search-bar",
+    searchDrawerInput: ".search-bar__input",
 
-    searchHeader: '.search-header',
-    searchHeaderInput: '.search-header__input',
-    searchHeaderSubmit: '.search-header__submit',
+    searchHeader: ".search-header",
+    searchHeaderInput: ".search-header__input",
+    searchHeaderSubmit: ".search-header__submit",
 
-    mobileNavWrapper: '.mobile-nav-wrapper'
+    mobileNavWrapper: ".mobile-nav-wrapper"
   };
 
   var classes = {
-    focus: 'search--focus',
-    mobileNavIsOpen: 'js-menu--is-open'
+    focus: "search--focus",
+    mobileNavIsOpen: "js-menu--is-open"
   };
 
   function init() {
@@ -1224,30 +1222,30 @@ theme.Search = (function() {
 
     $(selectors.searchHeaderInput)
       .add(selectors.searchHeaderSubmit)
-      .on('focus blur', function() {
+      .on("focus blur", function() {
         $(selectors.searchHeader).toggleClass(classes.focus);
       });
 
-    $(selectors.siteHeaderSearchToggle).on('click', function() {
+    $(selectors.siteHeaderSearchToggle).on("click", function() {
       var searchHeight = $(selectors.siteHeader).outerHeight();
       var searchOffset = $(selectors.siteHeader).offset().top - searchHeight;
 
       $(selectors.searchDrawer).css({
-        height: searchHeight + 'px',
-        top: searchOffset + 'px'
+        height: searchHeight + "px",
+        top: searchOffset + "px"
       });
     });
   }
 
   function initDrawer() {
     // Add required classes to HTML
-    $('#PageContainer').addClass('drawer-page-content');
-    $('.js-drawer-open-top')
-      .attr('aria-controls', 'SearchDrawer')
-      .attr('aria-expanded', 'false')
-      .attr('aria-haspopup', 'dialog');
+    $("#PageContainer").addClass("drawer-page-content");
+    $(".js-drawer-open-top")
+      .attr("aria-controls", "SearchDrawer")
+      .attr("aria-expanded", "false")
+      .attr("aria-haspopup", "dialog");
 
-    theme.SearchDrawer = new theme.Drawers('SearchDrawer', 'top', {
+    theme.SearchDrawer = new theme.Drawers("SearchDrawer", "top", {
       onDrawerOpen: searchDrawerFocus,
       onDrawerClose: searchDrawerFocusClose
     });
@@ -1272,7 +1270,7 @@ theme.Search = (function() {
   }
 
   function searchSubmit() {
-    $(selectors.searchSubmit).on('click', function(evt) {
+    $(selectors.searchSubmit).on("click", function(evt) {
       var $el = $(evt.target);
       var $input = $el.parents(selectors.search).find(selectors.searchInput);
       if ($input.val().length === 0) {
@@ -1289,7 +1287,7 @@ theme.Search = (function() {
 
 (function() {
   var selectors = {
-    backButton: '.return-link'
+    backButton: ".return-link"
   };
 
   var $backButton = $(selectors.backButton);
@@ -1298,7 +1296,7 @@ theme.Search = (function() {
     return;
   }
 
-  $backButton.one('click', function(evt) {
+  $backButton.one("click", function(evt) {
     evt.preventDefault();
 
     var referrerDomain = urlDomain(document.referrer);
@@ -1312,7 +1310,7 @@ theme.Search = (function() {
   });
 
   function urlDomain(url) {
-    var anchor = document.createElement('a');
+    var anchor = document.createElement("a");
     anchor.ref = url;
 
     return anchor.hostname;
@@ -1322,20 +1320,20 @@ theme.Search = (function() {
 theme.Slideshow = (function() {
   this.$slideshow = null;
   var classes = {
-    wrapper: 'slideshow-wrapper',
-    slideshow: 'slideshow',
-    currentSlide: 'slick-current',
-    video: 'slideshow__video',
-    videoBackground: 'slideshow__video--background',
-    closeVideoBtn: 'slideshow__video-control--close',
-    pauseButton: 'slideshow__pause',
-    isPaused: 'is-paused'
+    wrapper: "slideshow-wrapper",
+    slideshow: "slideshow",
+    currentSlide: "slick-current",
+    video: "slideshow__video",
+    videoBackground: "slideshow__video--background",
+    closeVideoBtn: "slideshow__video-control--close",
+    pauseButton: "slideshow__pause",
+    isPaused: "is-paused"
   };
 
   function slideshow(el) {
     this.$slideshow = $(el);
-    this.$wrapper = this.$slideshow.closest('.' + classes.wrapper);
-    this.$pause = this.$wrapper.find('.' + classes.pauseButton);
+    this.$wrapper = this.$slideshow.closest("." + classes.wrapper);
+    this.$pause = this.$wrapper.find("." + classes.pauseButton);
 
     this.settings = {
       accessibility: true,
@@ -1344,15 +1342,15 @@ theme.Slideshow = (function() {
       fade: true,
       draggable: true,
       touchThreshold: 20,
-      autoplay: this.$slideshow.data('autoplay'),
-      autoplaySpeed: this.$slideshow.data('speed')
+      autoplay: this.$slideshow.data("autoplay"),
+      autoplaySpeed: this.$slideshow.data("speed")
     };
 
-    this.$slideshow.on('beforeChange', beforeChange.bind(this));
-    this.$slideshow.on('init', slideshowA11y.bind(this));
+    this.$slideshow.on("beforeChange", beforeChange.bind(this));
+    this.$slideshow.on("init", slideshowA11y.bind(this));
     this.$slideshow.slick(this.settings);
 
-    this.$pause.on('click', this.togglePause.bind(this));
+    this.$pause.on("click", this.togglePause.bind(this));
   }
 
   function slideshowA11y(event, obj) {
@@ -1362,29 +1360,29 @@ theme.Slideshow = (function() {
     var autoplay = this.settings.autoplay;
 
     // Remove default Slick aria-live attr until slider is focused
-    $list.removeAttr('aria-live');
+    $list.removeAttr("aria-live");
 
     // When an element in the slider is focused
     // pause slideshow and set aria-live.
-    $wrapper.on('focusin', function(evt) {
+    $wrapper.on("focusin", function(evt) {
       if (!$wrapper.has(evt.target).length) {
         return;
       }
 
-      $list.attr('aria-live', 'polite');
+      $list.attr("aria-live", "polite");
 
       if (autoplay) {
-        $slider.slick('slickPause');
+        $slider.slick("slickPause");
       }
     });
 
     // Resume autoplay
-    $wrapper.on('focusout', function(evt) {
+    $wrapper.on("focusout", function(evt) {
       if (!$wrapper.has(evt.target).length) {
         return;
       }
 
-      $list.removeAttr('aria-live');
+      $list.removeAttr("aria-live");
 
       if (autoplay) {
         // Manual check if the focused element was the video close button
@@ -1393,24 +1391,24 @@ theme.Slideshow = (function() {
           return;
         }
 
-        $slider.slick('slickPlay');
+        $slider.slick("slickPlay");
       }
     });
 
     // Add arrow key support when focused
     if (obj.$dots) {
-      obj.$dots.on('keydown', function(evt) {
+      obj.$dots.on("keydown", function(evt) {
         if (evt.which === 37) {
-          $slider.slick('slickPrev');
+          $slider.slick("slickPrev");
         }
 
         if (evt.which === 39) {
-          $slider.slick('slickNext');
+          $slider.slick("slickNext");
         }
 
         // Update focus on newly selected tab
         if (evt.which === 37 || evt.which === 39) {
-          obj.$dots.find('.slick-active button').focus();
+          obj.$dots.find(".slick-active button").focus();
         }
       });
     }
@@ -1418,47 +1416,47 @@ theme.Slideshow = (function() {
 
   function beforeChange(event, slick, currentSlide, nextSlide) {
     var $slider = slick.$slider;
-    var $currentSlide = $slider.find('.' + classes.currentSlide);
+    var $currentSlide = $slider.find("." + classes.currentSlide);
     var $nextSlide = $slider.find(
       '.slideshow__slide[data-slick-index="' + nextSlide + '"]'
     );
 
     if (isVideoInSlide($currentSlide)) {
-      var $currentVideo = $currentSlide.find('.' + classes.video);
-      var currentVideoId = $currentVideo.attr('id');
+      var $currentVideo = $currentSlide.find("." + classes.video);
+      var currentVideoId = $currentVideo.attr("id");
       theme.SlideshowVideo.pauseVideo(currentVideoId);
-      $currentVideo.attr('tabindex', '-1');
+      $currentVideo.attr("tabindex", "-1");
     }
 
     if (isVideoInSlide($nextSlide)) {
-      var $video = $nextSlide.find('.' + classes.video);
-      var videoId = $video.attr('id');
+      var $video = $nextSlide.find("." + classes.video);
+      var videoId = $video.attr("id");
       var isBackground = $video.hasClass(classes.videoBackground);
       if (isBackground) {
         theme.SlideshowVideo.playVideo(videoId);
       } else {
-        $video.attr('tabindex', '0');
+        $video.attr("tabindex", "0");
       }
     }
   }
 
   function isVideoInSlide($slide) {
-    return $slide.find('.' + classes.video).length;
+    return $slide.find("." + classes.video).length;
   }
 
   slideshow.prototype.togglePause = function() {
     var slideshowSelector = getSlideshowId(this.$pause);
     if (this.$pause.hasClass(classes.isPaused)) {
       this.$pause.removeClass(classes.isPaused);
-      $(slideshowSelector).slick('slickPlay');
+      $(slideshowSelector).slick("slickPlay");
     } else {
       this.$pause.addClass(classes.isPaused);
-      $(slideshowSelector).slick('slickPause');
+      $(slideshowSelector).slick("slickPause");
     }
   };
 
   function getSlideshowId($el) {
-    return '#Slideshow-' + $el.data('id');
+    return "#Slideshow-" + $el.data("id");
   }
 
   return slideshow;
@@ -1487,7 +1485,7 @@ theme.SlideshowVideo = (function() {
       autoplay: 0,
       controls: 0,
       showinfo: 0,
-      wmode: 'opaque',
+      wmode: "opaque",
       branding: 0,
       autohide: 0,
       rel: 0
@@ -1498,22 +1496,22 @@ theme.SlideshowVideo = (function() {
     }
   };
   var classes = {
-    playing: 'video-is-playing',
-    paused: 'video-is-paused',
-    loading: 'video-is-loading',
-    loaded: 'video-is-loaded',
-    slideshowWrapper: 'slideshow-wrapper',
-    slide: 'slideshow__slide',
-    slideBackgroundVideo: 'slideshow__slide--background-video',
-    slideDots: 'slick-dots',
-    videoChrome: 'slideshow__video--chrome',
-    videoBackground: 'slideshow__video--background',
-    playVideoBtn: 'slideshow__video-control--play',
-    closeVideoBtn: 'slideshow__video-control--close',
-    currentSlide: 'slick-current',
-    slickClone: 'slick-cloned',
-    supportsAutoplay: 'autoplay',
-    supportsNoAutoplay: 'no-autoplay'
+    playing: "video-is-playing",
+    paused: "video-is-paused",
+    loading: "video-is-loading",
+    loaded: "video-is-loaded",
+    slideshowWrapper: "slideshow-wrapper",
+    slide: "slideshow__slide",
+    slideBackgroundVideo: "slideshow__slide--background-video",
+    slideDots: "slick-dots",
+    videoChrome: "slideshow__video--chrome",
+    videoBackground: "slideshow__video--background",
+    playVideoBtn: "slideshow__video-control--play",
+    closeVideoBtn: "slideshow__video-control--close",
+    currentSlide: "slick-current",
+    slickClone: "slick-cloned",
+    supportsAutoplay: "autoplay",
+    supportsNoAutoplay: "no-autoplay"
   };
 
   /**
@@ -1524,23 +1522,23 @@ theme.SlideshowVideo = (function() {
       return;
     }
 
-    videos[$video.attr('id')] = {
-      id: $video.attr('id'),
-      videoId: $video.data('id'),
-      type: $video.data('type'),
-      status: $video.data('type') === 'chrome' ? 'closed' : 'background', // closed, open, background
-      videoSelector: $video.attr('id'),
-      $parentSlide: $video.closest('.' + classes.slide),
-      $parentSlideshowWrapper: $video.closest('.' + classes.slideshowWrapper),
-      controls: $video.data('type') === 'background' ? 0 : 1,
-      slideshow: $video.data('slideshow')
+    videos[$video.attr("id")] = {
+      id: $video.attr("id"),
+      videoId: $video.data("id"),
+      type: $video.data("type"),
+      status: $video.data("type") === "chrome" ? "closed" : "background", // closed, open, background
+      videoSelector: $video.attr("id"),
+      $parentSlide: $video.closest("." + classes.slide),
+      $parentSlideshowWrapper: $video.closest("." + classes.slideshowWrapper),
+      controls: $video.data("type") === "background" ? 0 : 1,
+      slideshow: $video.data("slideshow")
     };
 
     if (!youtubeLoaded) {
       // This code loads the IFrame Player API code asynchronously.
-      var tag = document.createElement('script');
-      tag.src = 'https://www.youtube.com/iframe_api';
-      var firstScriptTag = document.getElementsByTagName('script')[0];
+      var tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName("script")[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     }
   }
@@ -1553,7 +1551,7 @@ theme.SlideshowVideo = (function() {
       return;
     }
 
-    if (playerId && typeof videoPlayers[playerId].playVideo === 'function') {
+    if (playerId && typeof videoPlayers[playerId].playVideo === "function") {
       privatePlayVideo(playerId);
     }
   }
@@ -1561,7 +1559,7 @@ theme.SlideshowVideo = (function() {
   function pauseVideo(playerId) {
     if (
       videoPlayers[playerId] &&
-      typeof videoPlayers[playerId].pauseVideo === 'function'
+      typeof videoPlayers[playerId].pauseVideo === "function"
     ) {
       videoPlayers[playerId].pauseVideo();
     }
@@ -1701,20 +1699,20 @@ theme.SlideshowVideo = (function() {
 
   // The API will call this function when each video player is ready
   function onPlayerReady(evt) {
-    evt.target.setPlaybackQuality('hd1080');
+    evt.target.setPlaybackQuality("hd1080");
     var videoData = getVideoOptions(evt);
 
     playOnClickCheck();
 
     // Prevent tabbing through YouTube player controls until visible
-    $('#' + videoData.id).attr('tabindex', '-1');
+    $("#" + videoData.id).attr("tabindex", "-1");
 
     sizeBackgroundVideos();
 
     // Customize based on options from the video ID
     switch (videoData.type) {
-      case 'background-chrome':
-      case 'background':
+      case "background-chrome":
+      case "background":
         evt.target.mute();
         // Only play the video if it is in the active slide
         if (videoData.$parentSlide.hasClass(classes.currentSlide)) {
@@ -1744,14 +1742,14 @@ theme.SlideshowVideo = (function() {
 
   function setAsFinished(videoData) {
     switch (videoData.type) {
-      case 'background':
+      case "background":
         videoPlayers[videoData.id].seekTo(0);
         break;
-      case 'background-chrome':
+      case "background-chrome":
         videoPlayers[videoData.id].seekTo(0);
         closeVideo(videoData.id);
         break;
-      case 'chrome':
+      case "chrome":
         closeVideo(videoData.id);
         break;
     }
@@ -1764,41 +1762,41 @@ theme.SlideshowVideo = (function() {
     $slide.removeClass(classes.loading);
 
     // Do not change element visibility if it is a background video
-    if (videoData.status === 'background') {
+    if (videoData.status === "background") {
       return;
     }
 
-    $('#' + videoData.id).attr('tabindex', '0');
+    $("#" + videoData.id).attr("tabindex", "0");
 
     switch (videoData.type) {
-      case 'chrome':
-      case 'background-chrome':
+      case "chrome":
+      case "background-chrome":
         $slideshow.removeClass(classes.paused).addClass(classes.playing);
         $slide.removeClass(classes.paused).addClass(classes.playing);
         break;
     }
 
     // Update focus to the close button so we stay within the slide
-    $slide.find('.' + classes.closeVideoBtn).focus();
+    $slide.find("." + classes.closeVideoBtn).focus();
   }
 
   function setAsPaused(videoData) {
     var $slideshow = videoData.$parentSlideshowWrapper;
     var $slide = videoData.$parentSlide;
 
-    if (videoData.type === 'background-chrome') {
+    if (videoData.type === "background-chrome") {
       closeVideo(videoData.id);
       return;
     }
 
     // YT's events fire after our click event. This status flag ensures
     // we don't interact with a closed or background video.
-    if (videoData.status !== 'closed' && videoData.type !== 'background') {
+    if (videoData.status !== "closed" && videoData.type !== "background") {
       $slideshow.addClass(classes.paused);
       $slide.addClass(classes.paused);
     }
 
-    if (videoData.type === 'chrome' && videoData.status === 'closed') {
+    if (videoData.type === "chrome" && videoData.status === "closed") {
       $slideshow.removeClass(classes.paused);
       $slide.removeClass(classes.paused);
     }
@@ -1811,18 +1809,18 @@ theme.SlideshowVideo = (function() {
     var videoData = videos[playerId];
     var $slideshow = videoData.$parentSlideshowWrapper;
     var $slide = videoData.$parentSlide;
-    var classesToRemove = [classes.pause, classes.playing].join(' ');
+    var classesToRemove = [classes.pause, classes.playing].join(" ");
 
-    $('#' + videoData.id).attr('tabindex', '-1');
+    $("#" + videoData.id).attr("tabindex", "-1");
 
-    videoData.status = 'closed';
+    videoData.status = "closed";
 
     switch (videoData.type) {
-      case 'background-chrome':
+      case "background-chrome":
         videoPlayers[playerId].mute();
         setBackgroundVideo(playerId);
         break;
-      case 'chrome':
+      case "chrome":
         videoPlayers[playerId].stopVideo();
         setAsPaused(videoData); // in case the video is already paused
         break;
@@ -1841,21 +1839,21 @@ theme.SlideshowVideo = (function() {
     // add loading class to slide
     videoData.$parentSlide.addClass(classes.loading);
 
-    videoData.status = 'open';
+    videoData.status = "open";
 
     switch (videoData.type) {
-      case 'background-chrome':
+      case "background-chrome":
         unsetBackgroundVideo(playerId, videoData);
         videoPlayers[playerId].unMute();
         privatePlayVideo(playerId, true);
         break;
-      case 'chrome':
+      case "chrome":
         privatePlayVideo(playerId, true);
         break;
     }
 
     // esc to close video player
-    $(document).on('keydown.videoPlayer', function(evt) {
+    $(document).on("keydown.videoPlayer", function(evt) {
       if (evt.keyCode === 27) {
         closeVideo(playerId);
       }
@@ -1863,13 +1861,13 @@ theme.SlideshowVideo = (function() {
   }
 
   function sizeBackgroundVideos() {
-    $('.' + classes.videoBackground).each(function(index, el) {
+    $("." + classes.videoBackground).each(function(index, el) {
       sizeBackgroundVideo($(el));
     });
   }
 
   function sizeBackgroundVideo($player) {
-    var $slide = $player.closest('.' + classes.slide);
+    var $slide = $player.closest("." + classes.slide);
     // Ignore cloned slides
     if ($slide.hasClass(classes.slickClone)) {
       return;
@@ -1905,8 +1903,8 @@ theme.SlideshowVideo = (function() {
 
   function unsetBackgroundVideo(playerId) {
     // Switch the background-chrome to a chrome-only player once played
-    $('#' + playerId)
-      .removeAttr('style')
+    $("#" + playerId)
+      .removeAttr("style")
       .removeClass(classes.videoBackground)
       .addClass(classes.videoChrome);
 
@@ -1918,39 +1916,39 @@ theme.SlideshowVideo = (function() {
       .removeClass(classes.slideBackgroundVideo)
       .addClass(classes.playing);
 
-    videos[playerId].status = 'open';
+    videos[playerId].status = "open";
   }
 
   function setBackgroundVideo(playerId) {
     // Switch back to background-chrome when closed
-    var $player = $('#' + playerId)
+    var $player = $("#" + playerId)
       .addClass(classes.videoBackground)
       .removeClass(classes.videoChrome);
 
     videos[playerId].$parentSlide.addClass(classes.slideBackgroundVideo);
 
-    videos[playerId].status = 'background';
+    videos[playerId].status = "background";
     sizeBackgroundVideo($player);
   }
 
   function initEvents() {
-    $(document).on('click.videoPlayer', '.' + classes.playVideoBtn, function(
+    $(document).on("click.videoPlayer", "." + classes.playVideoBtn, function(
       evt
     ) {
-      var playerId = $(evt.currentTarget).data('controls');
+      var playerId = $(evt.currentTarget).data("controls");
       startVideoOnClick(playerId);
     });
 
-    $(document).on('click.videoPlayer', '.' + classes.closeVideoBtn, function(
+    $(document).on("click.videoPlayer", "." + classes.closeVideoBtn, function(
       evt
     ) {
-      var playerId = $(evt.currentTarget).data('controls');
+      var playerId = $(evt.currentTarget).data("controls");
       closeVideo(playerId);
     });
 
     // Listen to resize to keep a background-size:cover-like layout
     $(window).on(
-      'resize.videoPlayer',
+      "resize.videoPlayer",
       $.debounce(250, function() {
         if (youtubeLoaded) {
           sizeBackgroundVideos();
@@ -1960,8 +1958,8 @@ theme.SlideshowVideo = (function() {
   }
 
   function removeEvents() {
-    $(document).off('.videoPlayer');
-    $(window).off('.videoPlayer');
+    $(document).off(".videoPlayer");
+    $(window).off(".videoPlayer");
   }
 
   return {
@@ -1974,16 +1972,15 @@ theme.SlideshowVideo = (function() {
   };
 })();
 
-
 /* ================ TEMPLATES ================ */
 (function() {
-  var $filterBy = $('#BlogTagFilter');
+  var $filterBy = $("#BlogTagFilter");
 
   if (!$filterBy.length) {
     return;
   }
 
-  $filterBy.on('change', function() {
+  $filterBy.on("change", function() {
     location.href = $(this).val();
   });
 })();
@@ -1993,13 +1990,13 @@ window.theme = theme || {};
 theme.customerTemplates = (function() {
   function initEventListeners() {
     // Show reset password form
-    $('#RecoverPassword').on('click', function(evt) {
+    $("#RecoverPassword").on("click", function(evt) {
       evt.preventDefault();
       toggleRecoverPasswordForm();
     });
 
     // Hide reset password form
-    $('#HideRecoverPasswordLink').on('click', function(evt) {
+    $("#HideRecoverPasswordLink").on("click", function(evt) {
       evt.preventDefault();
       toggleRecoverPasswordForm();
     });
@@ -2011,8 +2008,8 @@ theme.customerTemplates = (function() {
    *
    */
   function toggleRecoverPasswordForm() {
-    $('#RecoverPasswordForm').toggleClass('hide');
-    $('#CustomerLoginForm').toggleClass('hide');
+    $("#RecoverPasswordForm").toggleClass("hide");
+    $("#CustomerLoginForm").toggleClass("hide");
   }
 
   /**
@@ -2021,7 +2018,7 @@ theme.customerTemplates = (function() {
    *
    */
   function resetPasswordSuccess() {
-    var $formState = $('.reset-password-success');
+    var $formState = $(".reset-password-success");
 
     // check if reset password form was successfully submited.
     if (!$formState.length) {
@@ -2029,7 +2026,7 @@ theme.customerTemplates = (function() {
     }
 
     // show success message
-    $('#ResetSuccess').removeClass('hide');
+    $("#ResetSuccess").removeClass("hide");
   }
 
   /**
@@ -2038,7 +2035,7 @@ theme.customerTemplates = (function() {
    *
    */
   function customerAddressForm() {
-    var $newAddressForm = $('#AddressNewForm');
+    var $newAddressForm = $("#AddressNewForm");
 
     if (!$newAddressForm.length) {
       return;
@@ -2048,20 +2045,20 @@ theme.customerTemplates = (function() {
     if (Shopify) {
       // eslint-disable-next-line no-new
       new Shopify.CountryProvinceSelector(
-        'AddressCountryNew',
-        'AddressProvinceNew',
+        "AddressCountryNew",
+        "AddressProvinceNew",
         {
-          hideElement: 'AddressProvinceContainerNew'
+          hideElement: "AddressProvinceContainerNew"
         }
       );
     }
 
     // Initialize each edit form's country/province selector
-    $('.address-country-option').each(function() {
-      var formId = $(this).data('form-id');
-      var countrySelector = 'AddressCountry_' + formId;
-      var provinceSelector = 'AddressProvince_' + formId;
-      var containerSelector = 'AddressProvinceContainer_' + formId;
+    $(".address-country-option").each(function() {
+      var formId = $(this).data("form-id");
+      var countrySelector = "AddressCountry_" + formId;
+      var provinceSelector = "AddressProvince_" + formId;
+      var containerSelector = "AddressProvinceContainer_" + formId;
 
       // eslint-disable-next-line no-new
       new Shopify.CountryProvinceSelector(countrySelector, provinceSelector, {
@@ -2070,28 +2067,28 @@ theme.customerTemplates = (function() {
     });
 
     // Toggle new/edit address forms
-    $('.address-new-toggle').on('click', function() {
-      $newAddressForm.toggleClass('hide');
+    $(".address-new-toggle").on("click", function() {
+      $newAddressForm.toggleClass("hide");
     });
 
-    $('.address-edit-toggle').on('click', function() {
-      var formId = $(this).data('form-id');
-      $('#EditAddress_' + formId).toggleClass('hide');
+    $(".address-edit-toggle").on("click", function() {
+      var formId = $(this).data("form-id");
+      $("#EditAddress_" + formId).toggleClass("hide");
     });
 
-    $('.address-delete').on('click', function() {
+    $(".address-delete").on("click", function() {
       var $el = $(this);
-      var formId = $el.data('form-id');
-      var confirmMessage = $el.data('confirm-message');
+      var formId = $el.data("form-id");
+      var confirmMessage = $el.data("confirm-message");
 
       // eslint-disable-next-line no-alert
       if (
         confirm(
-          confirmMessage || 'Are you sure you wish to delete this address?'
+          confirmMessage || "Are you sure you wish to delete this address?"
         )
       ) {
-        Shopify.postLink('/account/addresses/' + formId, {
-          parameters: { _method: 'delete' }
+        Shopify.postLink("/account/addresses/" + formId, {
+          parameters: { _method: "delete" }
         });
       }
     });
@@ -2106,7 +2103,7 @@ theme.customerTemplates = (function() {
     var hash = window.location.hash;
 
     // Allow deep linking to recover password form
-    if (hash === '#recover') {
+    if (hash === "#recover") {
       toggleRecoverPasswordForm();
     }
   }
@@ -2121,18 +2118,17 @@ theme.customerTemplates = (function() {
   };
 })();
 
-
 /*================ SECTIONS ================*/
 window.theme = window.theme || {};
 
 theme.Cart = (function() {
   var selectors = {
-    edit: '.js-edit-toggle'
+    edit: ".js-edit-toggle"
   };
   var config = {
-    showClass: 'cart__update--show',
-    showEditClass: 'cart__edit--active',
-    cartNoCookies: 'cart--no-cookies'
+    showClass: "cart__update--show",
+    showEditClass: "cart__edit--active",
+    cartNoCookies: "cart--no-cookies"
   };
 
   function Cart(container) {
@@ -2143,17 +2139,17 @@ theme.Cart = (function() {
       this.$container.addClass(config.cartNoCookies);
     }
 
-    this.$edit.on('click', this._onEditClick.bind(this));
+    this.$edit.on("click", this._onEditClick.bind(this));
   }
 
   Cart.prototype = _.assignIn({}, Cart.prototype, {
     onUnload: function() {
-      this.$edit.off('click', this._onEditClick);
+      this.$edit.off("click", this._onEditClick);
     },
 
     _onEditClick: function(evt) {
       var $evtTarget = $(evt.target);
-      var $updateLine = $('.' + $evtTarget.data('target'));
+      var $updateLine = $("." + $evtTarget.data("target"));
 
       $evtTarget.toggleClass(config.showEditClass);
       $updateLine.toggleClass(config.showClass);
@@ -2163,8 +2159,8 @@ theme.Cart = (function() {
       var cookieEnabled = navigator.cookieEnabled;
 
       if (!cookieEnabled) {
-        document.cookie = 'testcookie';
-        cookieEnabled = document.cookie.indexOf('testcookie') !== -1;
+        document.cookie = "testcookie";
+        cookieEnabled = document.cookie.indexOf("testcookie") !== -1;
       }
       return cookieEnabled;
     }
@@ -2177,12 +2173,12 @@ window.theme = window.theme || {};
 
 theme.Filters = (function() {
   var constants = {
-    SORT_BY: 'sort_by'
+    SORT_BY: "sort_by"
   };
   var selectors = {
-    filterSelection: '#SortTags',
-    sortSelection: '#SortBy',
-    defaultSort: '#DefaultSortBy'
+    filterSelection: "#SortTags",
+    sortSelection: "#SortBy",
+    defaultSort: "#DefaultSortBy"
   };
 
   function Filters(container) {
@@ -2196,10 +2192,10 @@ theme.Filters = (function() {
 
     this.defaultSort = this._getDefaultSortValue();
     this._resizeSelect(this.$selects);
-    this.$selects.removeClass('hidden');
+    this.$selects.removeClass("hidden");
 
-    this.$filterSelect.on('change', this._onFilterChange.bind(this));
-    this.$sortSelect.on('change', this._onSortChange.bind(this));
+    this.$filterSelect.on("change", this._onFilterChange.bind(this));
+    this.$sortSelect.on("change", this._onSortChange.bind(this));
   }
 
   Filters.prototype = _.assignIn({}, Filters.prototype, {
@@ -2211,7 +2207,7 @@ theme.Filters = (function() {
         // clean up our url if the sort value is blank for default
         window.location.href = window.location.href.replace(
           window.location.search,
-          ''
+          ""
         );
       }
       this._resizeSelect($(evt.target));
@@ -2221,10 +2217,10 @@ theme.Filters = (function() {
       var filter = this._getFilterValue();
 
       // remove the 'page' parameter to go to the first page of results
-      var search = document.location.search.replace(/\?(page=\w+)?&?/, '');
+      var search = document.location.search.replace(/\?(page=\w+)?&?/, "");
 
       // only add the search parameters to the url if they exist
-      search = search !== '' ? '?' + search : '';
+      search = search !== "" ? "?" + search : "";
 
       document.location.href = filter + search;
       this._resizeSelect($(evt.target));
@@ -2244,10 +2240,10 @@ theme.Filters = (function() {
 
     _sortValue: function() {
       var sort = this._getSortValue();
-      var query = '';
+      var query = "";
 
       if (sort !== this.defaultSort) {
-        query = constants.SORT_BY + '=' + sort;
+        query = constants.SORT_BY + "=" + sort;
       }
 
       return query;
@@ -2258,11 +2254,11 @@ theme.Filters = (function() {
         var $this = $(this);
         var arrowWidth = 10;
         // create test element
-        var text = $this.find('option:selected').text();
-        var $test = $('<span>').html(text);
+        var text = $this.find("option:selected").text();
+        var $test = $("<span>").html(text);
 
         // add to body, get width, and get out
-        $test.appendTo('body');
+        $test.appendTo("body");
         var width = $test.width();
         $test.remove();
 
@@ -2272,8 +2268,8 @@ theme.Filters = (function() {
     },
 
     onUnload: function() {
-      this.$filterSelect.off('change', this._onFilterChange);
-      this.$sortSelect.off('change', this._onSortChange);
+      this.$filterSelect.off("change", this._onFilterChange);
+      this.$sortSelect.off("change", this._onSortChange);
     }
   });
 
@@ -2314,13 +2310,13 @@ theme.Maps = (function() {
 
   var selectors = {
     section: '[data-section-type="map"]',
-    map: '[data-map]',
-    mapOverlay: '[data-map-overlay]'
+    map: "[data-map]",
+    mapOverlay: "[data-map-overlay]"
   };
 
   var classes = {
-    mapError: 'map-section--load-error',
-    errorMsg: 'map-section__error errors text-center'
+    mapError: "map-section--load-error",
+    errorMsg: "map-section__error errors text-center"
   };
 
   // Global function called by Google on auth errors.
@@ -2338,31 +2334,31 @@ theme.Maps = (function() {
         classes.errorMsg +
         '">' +
         theme.strings.authError +
-        '</div>'
+        "</div>"
     );
   };
 
   function Map(container) {
     this.$container = $(container);
     this.$map = this.$container.find(selectors.map);
-    this.key = this.$map.data('api-key');
+    this.key = this.$map.data("api-key");
 
-    if (typeof this.key === 'undefined') {
+    if (typeof this.key === "undefined") {
       return;
     }
 
-    if (apiStatus === 'loaded') {
+    if (apiStatus === "loaded") {
       this.createMap();
     } else {
       mapsToLoad.push(this);
 
-      if (apiStatus !== 'loading') {
-        apiStatus = 'loading';
-        if (typeof window.google === 'undefined') {
+      if (apiStatus !== "loading") {
+        apiStatus = "loading";
+        if (typeof window.google === "undefined") {
           $.getScript(
-            'https://maps.googleapis.com/maps/api/js?key=' + this.key
+            "https://maps.googleapis.com/maps/api/js?key=" + this.key
           ).then(function() {
-            apiStatus = 'loaded';
+            apiStatus = "loaded";
             initAllMaps();
           });
         }
@@ -2380,7 +2376,7 @@ theme.Maps = (function() {
   function geolocate($map) {
     var deferred = $.Deferred();
     var geocoder = new google.maps.Geocoder();
-    var address = $map.data('address-setting');
+    var address = $map.data("address-setting");
 
     geocoder.geocode({ address: address }, function(results, status) {
       if (status !== google.maps.GeocoderStatus.OK) {
@@ -2421,11 +2417,11 @@ theme.Maps = (function() {
 
             google.maps.event.addDomListener(
               window,
-              'resize',
+              "resize",
               $.debounce(250, function() {
-                google.maps.event.trigger(map, 'resize');
+                google.maps.event.trigger(map, "resize");
                 map.setCenter(center);
-                $map.removeAttr('style');
+                $map.removeAttr("style");
               })
             );
           }.bind(this)
@@ -2434,13 +2430,13 @@ theme.Maps = (function() {
           var errorMessage;
 
           switch (status) {
-            case 'ZERO_RESULTS':
+            case "ZERO_RESULTS":
               errorMessage = errors.addressNoResults;
               break;
-            case 'OVER_QUERY_LIMIT':
+            case "OVER_QUERY_LIMIT":
               errorMessage = errors.addressQueryLimit;
               break;
-            case 'REQUEST_DENIED':
+            case "REQUEST_DENIED":
               errorMessage = errors.authError;
               break;
             default:
@@ -2458,7 +2454,7 @@ theme.Maps = (function() {
                   classes.errorMsg +
                   '">' +
                   errorMessage +
-                  '</div>'
+                  "</div>"
               );
           }
         });
@@ -2468,7 +2464,7 @@ theme.Maps = (function() {
       if (this.$map.length === 0) {
         return;
       }
-      google.maps.event.clearListeners(this.map, 'resize');
+      google.maps.event.clearListeners(this.map, "resize");
     }
   });
 
@@ -2479,51 +2475,51 @@ theme.Maps = (function() {
 theme.Product = (function() {
   function Product(container) {
     var $container = (this.$container = $(container));
-    var sectionId = $container.attr('data-section-id');
+    var sectionId = $container.attr("data-section-id");
 
     this.settings = {
       // Breakpoints from src/stylesheets/global/variables.scss.liquid
-      mediaQueryMediumUp: 'screen and (min-width: 750px)',
-      mediaQuerySmall: 'screen and (max-width: 749px)',
+      mediaQueryMediumUp: "screen and (min-width: 750px)",
+      mediaQuerySmall: "screen and (max-width: 749px)",
       bpSmall: false,
-      enableHistoryState: $container.data('enable-history-state') || false,
-      namespace: '.slideshow-' + sectionId,
+      enableHistoryState: $container.data("enable-history-state") || false,
+      namespace: ".slideshow-" + sectionId,
       sectionId: sectionId,
       sliderActive: false,
       zoomEnabled: false
     };
 
     this.selectors = {
-      addToCart: '#AddToCart-' + sectionId,
-      addToCartText: '#AddToCartText-' + sectionId,
-      comparePrice: '#ComparePrice-' + sectionId,
-      originalPrice: '#ProductPrice-' + sectionId,
-      SKU: '.variant-sku',
-      originalPriceWrapper: '.product-price__price-' + sectionId,
-      originalSelectorId: '#ProductSelect-' + sectionId,
-      productImageWraps: '.product-single__photo',
-      productPrices: '.product-single__price-' + sectionId,
-      productThumbImages: '.product-single__thumbnail--' + sectionId,
-      productThumbs: '.product-single__thumbnails-' + sectionId,
-      productFeaturedImage: '.product-featured-img',
-      saleClasses: 'product-price__sale product-price__sale--single',
-      saleLabel: '.product-price__sale-label-' + sectionId,
-      singleOptionSelector: '.single-option-selector-' + sectionId,
-      shopifyPaymentButton: '.shopify-payment-button'
+      addToCart: "#AddToCart-" + sectionId,
+      addToCartText: "#AddToCartText-" + sectionId,
+      comparePrice: "#ComparePrice-" + sectionId,
+      originalPrice: "#ProductPrice-" + sectionId,
+      SKU: ".variant-sku",
+      originalPriceWrapper: ".product-price__price-" + sectionId,
+      originalSelectorId: "#ProductSelect-" + sectionId,
+      productImageWraps: ".product-single__photo",
+      productPrices: ".product-single__price-" + sectionId,
+      productThumbImages: ".product-single__thumbnail--" + sectionId,
+      productThumbs: ".product-single__thumbnails-" + sectionId,
+      productFeaturedImage: ".product-featured-img",
+      saleClasses: "product-price__sale product-price__sale--single",
+      saleLabel: ".product-price__sale-label-" + sectionId,
+      singleOptionSelector: ".single-option-selector-" + sectionId,
+      shopifyPaymentButton: ".shopify-payment-button"
     };
 
     // Stop parsing if we don't have the product json script tag when loading
     // section in the Theme Editor
-    if (!$('#ProductJson-' + sectionId).html()) {
+    if (!$("#ProductJson-" + sectionId).html()) {
       return;
     }
 
     this.productSingleObject = JSON.parse(
-      document.getElementById('ProductJson-' + sectionId).innerHTML
+      document.getElementById("ProductJson-" + sectionId).innerHTML
     );
 
     this.settings.zoomEnabled = $(this.selectors.productImageWraps).hasClass(
-      'js-zoom-enabled'
+      "js-zoom-enabled"
     );
 
     this._initBreakpoints();
@@ -2582,7 +2578,7 @@ theme.Product = (function() {
       var options = {
         $container: this.$container,
         enableHistoryState:
-          this.$container.data('enable-history-state') || false,
+          this.$container.data("enable-history-state") || false,
         singleOptionSelector: this.selectors.singleOptionSelector,
         originalSelectorId: this.selectors.originalSelectorId,
         product: this.productSingleObject
@@ -2591,19 +2587,19 @@ theme.Product = (function() {
       this.variants = new slate.Variants(options);
 
       this.$container.on(
-        'variantChange' + this.settings.namespace,
+        "variantChange" + this.settings.namespace,
         this._updateAddToCart.bind(this)
       );
       this.$container.on(
-        'variantImageChange' + this.settings.namespace,
+        "variantImageChange" + this.settings.namespace,
         this._updateImages.bind(this)
       );
       this.$container.on(
-        'variantPriceChange' + this.settings.namespace,
+        "variantPriceChange" + this.settings.namespace,
         this._updatePrice.bind(this)
       );
       this.$container.on(
-        'variantSKUChange' + this.settings.namespace,
+        "variantSKUChange" + this.settings.namespace,
         this._updateSKU.bind(this)
       );
     },
@@ -2615,11 +2611,11 @@ theme.Product = (function() {
 
       var self = this;
 
-      $(this.selectors.productThumbImages).on('click', function(evt) {
+      $(this.selectors.productThumbImages).on("click", function(evt) {
         evt.preventDefault();
         var $el = $(this);
 
-        var imageId = $el.data('thumbnail-id');
+        var imageId = $el.data("thumbnail-id");
 
         self._switchImage(imageId);
         self._setActiveThumbnail(imageId);
@@ -2627,12 +2623,12 @@ theme.Product = (function() {
     },
 
     _setActiveThumbnail: function(imageId) {
-      var activeClass = 'active-thumb';
+      var activeClass = "active-thumb";
 
       // If there is no element passed, find it by the current product image
-      if (typeof imageId === 'undefined') {
+      if (typeof imageId === "undefined") {
         imageId = $(this.selectors.productImageWraps + ":not('.hide')").data(
-          'image-id'
+          "image-id"
         );
       }
 
@@ -2645,10 +2641,10 @@ theme.Product = (function() {
 
       $(this.selectors.productThumbImages)
         .removeClass(activeClass)
-        .removeAttr('aria-current');
+        .removeAttr("aria-current");
 
       $thumbnail.addClass(activeClass);
-      $thumbnail.attr('aria-current', true);
+      $thumbnail.attr("aria-current", true);
     },
 
     _switchImage: function(imageId) {
@@ -2663,9 +2659,9 @@ theme.Product = (function() {
           "'])",
         this.$container
       );
-      $newImage.removeClass('hide');
+      $newImage.removeClass("hide");
       $newImage.find(this.selectors.productFeaturedImage).focus();
-      $otherImages.addClass('hide');
+      $otherImages.addClass("hide");
     },
 
     _initThumbnailSlider: function() {
@@ -2673,8 +2669,8 @@ theme.Product = (function() {
         slidesToShow: 4,
         slidesToScroll: 3,
         infinite: false,
-        prevArrow: '.thumbnails-slider__prev--' + this.settings.sectionId,
-        nextArrow: '.thumbnails-slider__next--' + this.settings.sectionId,
+        prevArrow: ".thumbnails-slider__prev--" + this.settings.sectionId,
+        nextArrow: ".thumbnails-slider__next--" + this.settings.sectionId,
         responsive: [
           {
             breakpoint: 321,
@@ -2690,7 +2686,7 @@ theme.Product = (function() {
     },
 
     _destroyThumbnailSlider: function() {
-      $(this.selectors.productThumbs).slick('unslick');
+      $(this.selectors.productThumbs).slick("unslick");
       this.settings.sliderActive = false;
     },
 
@@ -2699,26 +2695,26 @@ theme.Product = (function() {
 
       if (variant) {
         $(this.selectors.productPrices)
-          .removeClass('visibility-hidden')
-          .attr('aria-hidden', 'true');
+          .removeClass("visibility-hidden")
+          .attr("aria-hidden", "true");
 
         if (variant.available) {
-          $(this.selectors.addToCart).prop('disabled', false);
+          $(this.selectors.addToCart).prop("disabled", false);
           $(this.selectors.addToCartText).text(theme.strings.addToCart);
           $(this.selectors.shopifyPaymentButton, this.$container).show();
         } else {
           // The variant doesn't exist, disable submit button and change the text.
           // This may be an error or notice that a specific variant is not available.
-          $(this.selectors.addToCart).prop('disabled', true);
+          $(this.selectors.addToCart).prop("disabled", true);
           $(this.selectors.addToCartText).text(theme.strings.soldOut);
           $(this.selectors.shopifyPaymentButton, this.$container).hide();
         }
       } else {
-        $(this.selectors.addToCart).prop('disabled', true);
+        $(this.selectors.addToCart).prop("disabled", true);
         $(this.selectors.addToCartText).text(theme.strings.unavailable);
         $(this.selectors.productPrices)
-          .addClass('visibility-hidden')
-          .attr('aria-hidden', 'false');
+          .addClass("visibility-hidden")
+          .attr("aria-hidden", "false");
         $(this.selectors.shopifyPaymentButton, this.$container).hide();
       }
     },
@@ -2748,16 +2744,16 @@ theme.Product = (function() {
               theme.moneyFormat
             )
           )
-          .removeClass('hide');
+          .removeClass("hide");
 
         $(this.selectors.originalPriceWrapper).addClass(
           this.selectors.saleClasses
         );
 
-        $(this.selectors.saleLabel).removeClass('hide');
+        $(this.selectors.saleLabel).removeClass("hide");
       } else {
-        $(this.selectors.comparePrice).addClass('hide');
-        $(this.selectors.saleLabel).addClass('hide');
+        $(this.selectors.comparePrice).addClass("hide");
+        $(this.selectors.saleLabel).addClass("hide");
         $(this.selectors.originalPriceWrapper).removeClass(
           this.selectors.saleClasses
         );
@@ -2777,14 +2773,14 @@ theme.Product = (function() {
   });
 
   function _enableZoom(el) {
-    var zoomUrl = $(el).data('zoom');
+    var zoomUrl = $(el).data("zoom");
     $(el).zoom({
       url: zoomUrl
     });
   }
 
   function _destroyZoom(el) {
-    $(el).trigger('zoom.destroy');
+    $(el).trigger("zoom.destroy");
   }
 
   return Product;
@@ -2792,8 +2788,8 @@ theme.Product = (function() {
 
 theme.Quotes = (function() {
   var config = {
-    mediaQuerySmall: 'screen and (max-width: 749px)',
-    mediaQueryMediumUp: 'screen and (min-width: 750px)',
+    mediaQuerySmall: "screen and (max-width: 749px)",
+    mediaQueryMediumUp: "screen and (min-width: 750px)",
     slideCount: 0
   };
   var defaults = {
@@ -2808,9 +2804,9 @@ theme.Quotes = (function() {
 
   function Quotes(container) {
     var $container = (this.$container = $(container));
-    var sectionId = $container.attr('data-section-id');
-    var wrapper = (this.wrapper = '.quotes-wrapper');
-    var slider = (this.slider = '#Quotes-' + sectionId);
+    var sectionId = $container.attr("data-section-id");
+    var wrapper = (this.wrapper = ".quotes-wrapper");
+    var slider = (this.slider = "#Quotes-" + sectionId);
     var $slider = $(slider, wrapper);
 
     var sliderActive = false;
@@ -2820,7 +2816,7 @@ theme.Quotes = (function() {
       adaptiveHeight: true
     });
 
-    config.slideCount = $slider.data('count');
+    config.slideCount = $slider.data("count");
 
     // Override slidesToShow/Scroll if there are not enough blocks
     if (config.slideCount < defaults.slidesToShow) {
@@ -2828,7 +2824,7 @@ theme.Quotes = (function() {
       defaults.slidesToScroll = config.slideCount;
     }
 
-    $slider.on('init', this.a11y.bind(this));
+    $slider.on("init", this.a11y.bind(this));
 
     enquire.register(config.mediaQuerySmall, {
       match: function() {
@@ -2844,7 +2840,7 @@ theme.Quotes = (function() {
 
     function initSlider(sliderObj, args) {
       if (sliderActive) {
-        sliderObj.slick('unslick');
+        sliderObj.slick("unslick");
         sliderActive = false;
       }
 
@@ -2858,18 +2854,18 @@ theme.Quotes = (function() {
       enquire.unregister(config.mediaQuerySmall);
       enquire.unregister(config.mediaQueryMediumUp);
 
-      $(this.slider, this.wrapper).slick('unslick');
+      $(this.slider, this.wrapper).slick("unslick");
     },
 
     onBlockSelect: function(evt) {
       // Ignore the cloned version
       var $slide = $(
-        '.quotes-slide--' + evt.detail.blockId + ':not(.slick-cloned)'
+        ".quotes-slide--" + evt.detail.blockId + ":not(.slick-cloned)"
       );
-      var slideIndex = $slide.data('slick-index');
+      var slideIndex = $slide.data("slick-index");
 
       // Go to selected slide, pause autoplay
-      $(this.slider, this.wrapper).slick('slickGoTo', slideIndex);
+      $(this.slider, this.wrapper).slick("slickGoTo", slideIndex);
     },
 
     a11y: function(event, obj) {
@@ -2877,19 +2873,19 @@ theme.Quotes = (function() {
       var $wrapper = $(this.wrapper, this.$container);
 
       // Remove default Slick aria-live attr until slider is focused
-      $list.removeAttr('aria-live');
+      $list.removeAttr("aria-live");
 
       // When an element in the slider is focused set aria-live
-      $wrapper.on('focusin', function(evt) {
+      $wrapper.on("focusin", function(evt) {
         if ($wrapper.has(evt.target).length) {
-          $list.attr('aria-live', 'polite');
+          $list.attr("aria-live", "polite");
         }
       });
 
       // Remove aria-live
-      $wrapper.on('focusout', function(evt) {
+      $wrapper.on("focusout", function(evt) {
         if ($wrapper.has(evt.target).length) {
-          $list.removeAttr('aria-live');
+          $list.removeAttr("aria-live");
         }
       });
     }
@@ -2903,13 +2899,13 @@ theme.slideshows = {};
 theme.SlideshowSection = (function() {
   function SlideshowSection(container) {
     var $container = (this.$container = $(container));
-    var sectionId = $container.attr('data-section-id');
-    var slideshow = (this.slideshow = '#Slideshow-' + sectionId);
+    var sectionId = $container.attr("data-section-id");
+    var slideshow = (this.slideshow = "#Slideshow-" + sectionId);
 
-    $('.slideshow__video', slideshow).each(function() {
+    $(".slideshow__video", slideshow).each(function() {
       var $el = $(this);
       theme.SlideshowVideo.init($el);
-      theme.SlideshowVideo.loadVideo($el.attr('id'));
+      theme.SlideshowVideo.loadVideo($el.attr("id"));
     });
 
     theme.slideshows[slideshow] = new theme.Slideshow(slideshow);
@@ -2931,44 +2927,43 @@ theme.SlideshowSection.prototype = _.assignIn(
 
       // Ignore the cloned version
       var $slide = $(
-        '.slideshow__slide--' + evt.detail.blockId + ':not(.slick-cloned)'
+        ".slideshow__slide--" + evt.detail.blockId + ":not(.slick-cloned)"
       );
-      var slideIndex = $slide.data('slick-index');
+      var slideIndex = $slide.data("slick-index");
 
       // Go to selected slide, pause autoplay
-      $slideshow.slick('slickGoTo', slideIndex).slick('slickPause');
+      $slideshow.slick("slickGoTo", slideIndex).slick("slickPause");
     },
 
     onBlockDeselect: function() {
       // Resume autoplay
-      $(this.slideshow).slick('slickPlay');
+      $(this.slideshow).slick("slickPlay");
     }
   }
 );
 
-
 $(document).ready(function() {
   var sections = new theme.Sections();
 
-  sections.register('cart-template', theme.Cart);
-  sections.register('product', theme.Product);
-  sections.register('collection-template', theme.Filters);
-  sections.register('product-template', theme.Product);
-  sections.register('header-section', theme.HeaderSection);
-  sections.register('map', theme.Maps);
-  sections.register('slideshow-section', theme.SlideshowSection);
-  sections.register('quotes', theme.Quotes);
+  sections.register("cart-template", theme.Cart);
+  sections.register("product", theme.Product);
+  sections.register("collection-template", theme.Filters);
+  sections.register("product-template", theme.Product);
+  sections.register("header-section", theme.HeaderSection);
+  sections.register("map", theme.Maps);
+  sections.register("slideshow-section", theme.SlideshowSection);
+  sections.register("quotes", theme.Quotes);
 });
 
 theme.init = function() {
   theme.customerTemplates.init();
 
   // Theme-specific selectors to make tables scrollable
-  var tableSelectors = '.rte table,' + '.custom__item-inner--html table';
+  var tableSelectors = ".rte table," + ".custom__item-inner--html table";
 
   slate.rte.wrapTable({
     $tables: $(tableSelectors),
-    tableWrapperClass: 'scrollable-wrapper'
+    tableWrapperClass: "scrollable-wrapper"
   });
 
   // Theme-specific selectors to make iframes responsive
@@ -2980,17 +2975,17 @@ theme.init = function() {
 
   slate.rte.wrapIframe({
     $iframes: $(iframeSelectors),
-    iframeWrapperClass: 'video-wrapper'
+    iframeWrapperClass: "video-wrapper"
   });
 
   // Common a11y fixes
   slate.a11y.pageLinkFocus($(window.location.hash));
 
-  $('.in-page-link').on('click', function(evt) {
+  $(".in-page-link").on("click", function(evt) {
     slate.a11y.pageLinkFocus($(evt.currentTarget.hash));
   });
 
-  $('a[href="#"]').on('click', function(evt) {
+  $('a[href="#"]').on("click", function(evt) {
     evt.preventDefault();
   });
 };
