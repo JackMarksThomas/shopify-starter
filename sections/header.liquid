@@ -126,7 +126,7 @@
         </nav>
       {% endif %}
 
-      <div class="grid__item small--one-half header__icons--cart text-right site-header__icons{% if shop.customer_accounts_enabled %} site-header__icons--plus{% endif %}">
+      <div class="mobile-nav-container grid__item small--one-half header__icons--cart text-right site-header__icons{% if shop.customer_accounts_enabled %} site-header__icons--plus{% endif %}">
         <div class="site-header__icons-wrapper">
           {% comment %} {% if section.settings.align_logo == 'left' %}
             <div class="site-header__search small--hide">
@@ -142,7 +142,7 @@
             {% if cart.item_count > 0 %}
                 My Cart: (<strong> {{ cart.item_count }} </strong>)
               {% else %}
-                My Cart: (😒)
+                My Cart: ( 😒)
             {% endif %}
           </a>
           {% if shop.customer_accounts_enabled %}

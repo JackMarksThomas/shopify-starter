@@ -1282,6 +1282,7 @@ select {
   font-family: $font-stack-body;
   color: $color-text;
   line-height: 1.5;
+  letter-spacing: 1px;
 }
 
 // Prevent zoom on touch devices in active inputs
@@ -1318,7 +1319,7 @@ h6 {
 h1 {
   font-size: em(floor($font-size-header * 1.35));
   text-transform: none;
-  letter-spacing: 0;
+  letter-spacing: 1px;
 
   @include media-query($small) {
     font-size: em(floor($font-size-header * 1.25));
@@ -1328,7 +1329,7 @@ h1 {
 h2 {
   font-size: em(floor($font-size-header * 0.78));
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 1px;
 
   @include media-query($small) {
     font-size: em(floor(($font-size-header * 0.78) * 0.9));
@@ -1338,7 +1339,7 @@ h2 {
 h3 {
   font-size: em($font-size-header);
   text-transform: none;
-  letter-spacing: 0;
+  letter-spacing: 1px;
 
   @include media-query($small) {
     font-size: em(floor($font-size-header * 0.78));
@@ -2270,15 +2271,60 @@ textarea {
   }
 }
 
+a[aria-current="page"] {
+  position: relative;
+}
+
 .site-nav {
   position: relative;
   padding: 0;
   text-align: right;
   margin: 25px 0;
+  font-weight: 600;
 
   a {
-    padding: 3px 10px;
+    padding: 3px 0;
+    margin: 0 10px;
   }
+
+  a[aria-current="page"] {
+    position: relative;
+    z-index: 1;
+
+    &:before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      height: 3px;
+      background: rgb(166.000005304813, 186.00000411272, 198.000003397465);
+      width: 100%;
+      left: 0;
+      z-index: -1;
+    }
+  }
+}
+
+#sidebar-menu a[aria-current="page"] {
+    color: #999;
+}
+
+#sidebar-menu a[aria-current="page"]:after {
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: calc(100% + 15px);
+    background: #b0d2e4;
+    left: -15px;
+    top: 50%;
+}
+
+ul#mobile-sidebar-nav {
+    display: none;
+    margin-bottom: $gutter-site-mobile;
+}
+
+#mobile-sidebar-nav.show {
+    display: block;
 }
 
 .site-nav--centered {
@@ -4565,6 +4611,10 @@ $nav-button-padding: 15px;
   background-color: $color-body;
 }
 
+.mobile-nav-container {
+    font-weight: 600;
+}
+
 /*================ Modals ================*/
 .modal {
   @include transform(translateY(-20px));
@@ -5189,8 +5239,10 @@ $toolbar-height-small: 46px;
 
 .site-footer__linklist,
 .site-footer__newsletter {
+  margin: $gutter-site 0;
 
   @include media-query($medium-up) {
+    margin: 0;
   }
 }
 
@@ -6027,9 +6079,11 @@ $toolbar-height-small: 46px;
 }
 
 // Override styles 
-.icon {
+header .icon {
   width: $font-size-base;
   height: $font-size-base;
   fill: $color-body-text;
-  opacity: .8;
+  opacity: 1;
+  stroke: $color-body-text;
+  stroke-width: 1px;
 }

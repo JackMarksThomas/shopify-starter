@@ -1,10 +1,10 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Test Theme",
-    "theme_author": "JMT",
-    "theme_version": "3.1.1",
-    "theme_documentation_url": "https://jackmarksthomas.github.io/",
+    "theme_name": "Orsman",
+    "theme_author": "Jack Marks-Thomas",
+    "theme_version": "1.0.0",
+    "theme_documentation_url": "https://jackmarksthomas.github.io",
     "theme_support_email": "jackmarksthomas@googlemail.com"
   },
   {

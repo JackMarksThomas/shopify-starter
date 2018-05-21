@@ -1185,6 +1185,14 @@ theme.MobileNav = (function() {
   };
 })(jQuery);
 
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+$(document).ready(function() {
+  $("#mobile-sidebar-btn").click(function() {
+    $("#mobile-sidebar-nav").toggle(450);
+  });
+});
+
 window.theme = window.theme || {};
 
 theme.Search = (function() {

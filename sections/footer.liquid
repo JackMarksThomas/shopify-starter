@@ -34,7 +34,7 @@
 
       <div class="grid__item{% if section.settings.footer_newsletter_enable and section.settings.footer_linklist != blank %} medium-up--one-quarter{% elsif section.settings.footer_linklist == blank and section.settings.footer_newsletter_enable %} medium-up--one-half{% else %} text-center{% endif %}">
         {% if linklists[section.settings.footer_linklist_two].links.size > 0 %}
-          <h4>Footer list 2</h4>
+          <h4>Links</h4>
           <ul class="site-footer__linklist{% unless section.settings.footer_newsletter_enable %} site-footer__linklist--center{% endunless %}">
             {% for link in linklists[section.settings.footer_linklist_two].links %}
               <li class="site-footer__linklist-item">
