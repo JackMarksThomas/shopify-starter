@@ -3373,6 +3373,10 @@ $color-blankstate-background: rgba($color-body-text, 0.1);
   .product-single__thumbnails {
     margin-top: $grid-gutter;
   }
+
+  .product-single__photo-wrapper {
+    margin: 0 0;
+  }
 }
 
 @include media-query ($small) {
@@ -3390,7 +3394,7 @@ $color-blankstate-background: rgba($color-body-text, 0.1);
 }
 
 .product-single__photo-wrapper {
-  margin: 0 0;
+  margin: 0 auto;
   width: 100%;
 }
 
@@ -6082,6 +6086,20 @@ $toolbar-height-small: 46px;
 }
 
 // Override styles 
+.grid-view-item.grid-view-item--sold-out.product-card dl .product-price {
+    text-decoration: none;
+    top: 0;
+    position: absolute;
+    right: 1rem;
+    background: #333;
+    color: #fff;
+    padding: .4rem .8rem;
+}
+
+.grid-view-item.grid-view-item--sold-out.product-card dl .product-price .product-price__sold-out {
+    color: #fff;
+}
+
 .icon {
   width: $font-size-base;
   height: $font-size-base;

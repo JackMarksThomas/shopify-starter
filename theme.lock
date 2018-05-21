@@ -16,7 +16,7 @@ assets/password.js:
 assets/theme.js:
   development: 2018-05-21T08:58:48-04:00   a774bad5427b274078c837442a79a59f
 assets/theme.scss.liquid:
-  development: 2018-05-21T08:57:38-04:00   7b2140044162e9381fcc3bcbe4d2687b
+  development: 2018-05-21T10:54:36-04:00   20e7bab1b5fd977c55186532122a6d5d
 assets/vendor.js:
   development: 2018-05-15T09:20:04-04:00   465fb5b94497c1cdcd55ba6cb04ffeb2
 config/settings_data.json:
@@ -54,11 +54,11 @@ sections/cart-template.liquid:
 sections/collection-list.liquid:
   development: 2018-05-15T09:20:02-04:00   8da2d9a0eab92a9e7959b7fb1c579975
 sections/collection-template.liquid:
-  development: 2018-05-21T08:46:17-04:00   ddeb61e78cefb86f19aa185559acf5fa
+  development: 2018-05-21T10:35:36-04:00   a5da95346dee3e2c1caa064f75a76575
 sections/collection.liquid:
-  development: 2018-05-16T07:15:15-04:00   b41a9d7edbb27db109cb50d93d0accab
+  development: 2018-05-21T10:37:49-04:00   5894a62165d0435617970394d62fd316
 sections/custom-content.liquid:
-  development: 2018-05-15T09:20:02-04:00   e2c1dabc887c9f1bc17968c97de0a29f
+  development: 2018-05-21T10:43:10-04:00   bef6f255046f409b59fc9ea9fdc9df26
 sections/feature-columns.liquid:
   development: 2018-05-15T09:20:02-04:00   b875de4a1b8756948b6875543844a7c7
 sections/feature-row.liquid:
@@ -216,7 +216,7 @@ snippets/no-blocks.liquid:
 snippets/pagination.liquid:
   development: 2018-05-15T09:20:07-04:00   21eb22fbf93da5d96f2d111ce4784463
 snippets/product-card-grid.liquid:
-  development: 2018-05-16T07:33:50-04:00   3f95fb09e63b642871a15c0593af51a0
+  development: 2018-05-21T10:50:39-04:00   7fba0cb9a659f578c73d288ffad10ed7
 snippets/product-card-list.liquid:
   development: 2018-05-15T09:20:07-04:00   701fa6db04bd9c70283028cc4274fc2f
 snippets/product-price.liquid:
