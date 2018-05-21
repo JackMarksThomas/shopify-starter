@@ -165,7 +165,8 @@
         {% unless linklists.sidebar-menu == blank %}
             <button id="mobile-sidebar-btn" type="button" class="btn--link btn-sidebar site-header__menu" aria-controls="styles-navigation"  aria-expanded="false" aria-label="{{ 'layout.navigation.menu' | t }}">
               Products
-              {% include 'icon-plus' %}
+              <span class="icon-container">{% include 'icon-plus' %}</span>
+              <span class="icon-container" style="display:none;">{% include 'icon-minus' %}</span>
             </button>
         {% endunless %}
       

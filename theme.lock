@@ -14,9 +14,9 @@ assets/match-media.min.js:
 assets/password.js:
   development: 2018-05-15T09:20:04-04:00   d826da9cb223a44d53a0c34f457e92dc
 assets/theme.js:
-  development: 2018-05-21T06:19:03-04:00   6f4edd329347f8b475b594d4e3ceeac3
+  development: 2018-05-21T08:58:48-04:00   a774bad5427b274078c837442a79a59f
 assets/theme.scss.liquid:
-  development: 2018-05-21T06:24:32-04:00   ed084108624a64089f57aa7f74dbf9ca
+  development: 2018-05-21T08:57:38-04:00   7b2140044162e9381fcc3bcbe4d2687b
 assets/vendor.js:
   development: 2018-05-15T09:20:04-04:00   465fb5b94497c1cdcd55ba6cb04ffeb2
 config/settings_data.json:
@@ -50,11 +50,11 @@ sections/article-template.liquid:
 sections/blog-template.liquid:
   development: 2018-05-15T09:20:02-04:00   b271843a318751c33bb4804eee7c1479
 sections/cart-template.liquid:
-  development: 2018-05-15T09:20:02-04:00   4f69dd16b97a295881fd57a6cc511fbf
+  development: 2018-05-21T09:04:50-04:00   1eb61b08e24f37dd2d567f3e303b8eef
 sections/collection-list.liquid:
   development: 2018-05-15T09:20:02-04:00   8da2d9a0eab92a9e7959b7fb1c579975
 sections/collection-template.liquid:
-  development: 2018-05-21T06:30:10-04:00   496ae30239cfcaea74affce6dc858da2
+  development: 2018-05-21T08:46:17-04:00   ddeb61e78cefb86f19aa185559acf5fa
 sections/collection.liquid:
   development: 2018-05-16T07:15:15-04:00   b41a9d7edbb27db109cb50d93d0accab
 sections/custom-content.liquid:
@@ -170,7 +170,7 @@ snippets/icon-maestro.liquid:
 snippets/icon-master.liquid:
   development: 2018-05-15T09:20:06-04:00   7be93970b63c2fd0e2b319a35c00a9d7
 snippets/icon-minus.liquid:
-  development: 2018-05-15T09:20:06-04:00   78c513424d498299e865f8a242823ad0
+  development: 2018-05-21T08:40:58-04:00   78c513424d498299e865f8a242823ad0
 snippets/icon-pause.liquid:
   development: 2018-05-15T09:20:06-04:00   99e785a63af3ab0a7ccd9c5551ea8910
 snippets/icon-paypal.liquid:
@@ -229,6 +229,8 @@ snippets/social-meta-tags.liquid:
   development: 2018-05-15T09:20:07-04:00   ae9e213401623b2601abf0ace8e21537
 snippets/social-sharing.liquid:
   development: 2018-05-15T09:20:07-04:00   011dd5c58fa718c8016b784f2d9fa92b
+templates/_old-index.liquid:
+  development: 2018-05-21T08:22:28-04:00   034564da719f1f503f71c6638210c15a
 templates/404.liquid:
   development: 2018-05-18T04:48:16-04:00   78ff5bec2d9f378feaaef3bb5188aa0d
 templates/article.liquid:
@@ -256,13 +258,15 @@ templates/customers/reset_password.liquid:
 templates/gift_card.liquid:
   development: 2018-05-15T09:20:08-04:00   3bd04b2b964e6a974a7473eaecd94feb
 templates/index.liquid:
-  development: 2018-05-15T09:20:08-04:00   56b51b6f96394db4b17c64b43e1c0010
+  development: 2018-05-21T08:32:58-04:00   4f9e744b77227daab9afe307e6f04f0c
 templates/list-collections.liquid:
   development: 2018-05-15T09:20:08-04:00   d42f6d6957169811896f646709d353d9
 templates/page.contact.liquid:
   development: 2018-05-15T09:20:08-04:00   e5ad157804a0b23ba6387683e308dfe0
 templates/page.liquid:
   development: 2018-05-15T09:20:08-04:00   26f97d3355078de5c6678ed3b34ad7f6
+templates/page.splash.liquid:
+  development: 2018-05-21T08:22:36-04:00   778501a3fcb8c3377b82bacbf8556976
 templates/password.liquid:
   development: 2018-05-15T09:20:08-04:00   30d1743d26765ce8c3fa53a3fdf9524f
 templates/product.liquid:

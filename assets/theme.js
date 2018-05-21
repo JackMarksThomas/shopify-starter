@@ -1190,6 +1190,7 @@ toggle between hiding and showing the dropdown content */
 $(document).ready(function() {
   $("#mobile-sidebar-btn").click(function() {
     $("#mobile-sidebar-nav").toggle(450);
+    $("#mobile-sidebar-btn .icon-container").toggle();
   });
 });
 
