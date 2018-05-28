@@ -340,6 +340,17 @@
       </ul>
     {% endif %}
 
+    {% if collection.handle != 'all' %}
+      <style>
+        .site-footer {
+          display: none;
+        }
+        .page-width {
+          padding-bottom: 55px;
+        }
+      </style>
+    {% endif %}
+
     {% if is_empty_collection %}
       <div class="grid__item medium-up--text-center small--text-center">
         <img style="max-height: 100px;" src="https://cdn.shopify.com/s/files/1/0077/8436/6138/files/sorry.png?5356980412972984829" alt="Sorry"/>
